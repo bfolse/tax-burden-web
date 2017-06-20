@@ -11,7 +11,27 @@
     <p th:text="'taxBurdenReport: ' + ${taxBurdenReport}" />
 
 <!--  Add table for taxBurdenReport  -->
+    <div class="taxBurdenReport" th:unless="${#lists.isEmpty(taxBurdenReport.taxEntries)}">
 
+        <h2>Tax Burden Report</h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Political Division</th>
+                <th>Tax Type</th>
+                <th>Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="te : ${taxBurdenReport.taxEntries}">
+                <td th:text="${te.politicalDivision.description}">DEFAULT</td>
+                <td th:text="${te.taxType}">DEFAULT</td>
+                <td th:text="${te.amount}">DEFAULT</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <a href="/geo">Submit another</a>
 </body>
 </html>
