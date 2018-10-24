@@ -7,7 +7,8 @@ public class TaxPayerProfile {
 	private List<String> politicalDivisionKeys;
 	private MonetaryAmount annualIncome;
 	private MonetaryAmount mortgageInterest;
-	
+	private MonetaryAmount realPropertyMarketValue;
+
 	/**
 	 * 
 	 */
@@ -48,6 +49,9 @@ public class TaxPayerProfile {
 		this.mortgageInterest = mortgageInterest;
 	}
 
+	/**
+	 * @param taxPayerProfile
+	 */
 	public TaxPayerProfile(com.ttb.service.taxburden.domain.TaxPayerProfile clientTaxPayerProfile) {
 		super();
 		this.postalCode = clientTaxPayerProfile.getPostalCode();
@@ -55,11 +59,15 @@ public class TaxPayerProfile {
 		this.annualIncome = new MonetaryAmount(clientTaxPayerProfile.getAnnualIncome());
 		this.mortgageInterest = new MonetaryAmount(clientTaxPayerProfile.getMortgageInterest());
 	}
-	
+
+	/**
+	 * @return com.ttb.service.taxburden.domain.TaxPayerProfile
+	 */
 	public com.ttb.service.taxburden.domain.TaxPayerProfile toClientTaxPayerProfile() {
 		return new com.ttb.service.taxburden.domain.TaxPayerProfile(this.postalCode, this.politicalDivisionKeys, 
-				this.annualIncome.toClientMonetaryAmount(), this.mortgageInterest.toClientMonetaryAmount());
+				this.annualIncome.toClientMonetaryAmount(), this.mortgageInterest.toClientMonetaryAmount(), this.realPropertyMarketValue.toClientMonetaryAmount());
 	}
+
 	/**
 	 * @return the postalCode
 	 */
@@ -116,62 +124,44 @@ public class TaxPayerProfile {
 		this.mortgageInterest = mortgageInterest;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
+	/**
+	 * @return the realPropertyMarketValue
 	 */
-	@Override
+	public MonetaryAmount getRealPropertyMarketValue() {
+		return realPropertyMarketValue;
+	}
+
+	/**
+	 * @param realPropertyMarketValue the realPropertyMarketValue to set
+	 */
+	public void setRealPropertyMarketValue(MonetaryAmount realPropertyMarketValue) {
+		this.realPropertyMarketValue = realPropertyMarketValue;
+	}
+
+	public boolean equals(Object object) {
+		if (this == object) return true;
+		if (object == null || getClass() != object.getClass()) return false;
+		if (!super.equals(object)) return false;
+		TaxPayerProfile that = (TaxPayerProfile) object;
+		return java.util.Objects.equals(postalCode, that.postalCode) &&
+				java.util.Objects.equals(politicalDivisionKeys, that.politicalDivisionKeys) &&
+				java.util.Objects.equals(annualIncome, that.annualIncome) &&
+				java.util.Objects.equals(mortgageInterest, that.mortgageInterest) &&
+				java.util.Objects.equals(realPropertyMarketValue, that.realPropertyMarketValue);
+	}
+
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((annualIncome == null) ? 0 : annualIncome.hashCode());
-		result = prime * result + ((mortgageInterest == null) ? 0 : mortgageInterest.hashCode());
-		result = prime * result + ((politicalDivisionKeys == null) ? 0 : politicalDivisionKeys.hashCode());
-		result = prime * result + ((postalCode == null) ? 0 : postalCode.hashCode());
-		return result;
+		return java.util.Objects.hash(super.hashCode(), postalCode, politicalDivisionKeys, annualIncome, mortgageInterest, realPropertyMarketValue);
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		TaxPayerProfile other = (TaxPayerProfile) obj;
-		if (annualIncome == null) {
-			if (other.annualIncome != null)
-				return false;
-		} else if (!annualIncome.equals(other.annualIncome))
-			return false;
-		if (mortgageInterest == null) {
-			if (other.mortgageInterest != null)
-				return false;
-		} else if (!mortgageInterest.equals(other.mortgageInterest))
-			return false;
-		if (politicalDivisionKeys == null) {
-			if (other.politicalDivisionKeys != null)
-				return false;
-		} else if (!politicalDivisionKeys.equals(other.politicalDivisionKeys))
-			return false;
-		if (postalCode == null) {
-			if (other.postalCode != null)
-				return false;
-		} else if (!postalCode.equals(other.postalCode))
-			return false;
-		return true;
+	@java.lang.Override
+	public java.lang.String toString() {
+		return "TaxPayerProfile{" +
+				"postalCode='" + postalCode + '\'' +
+				", politicalDivisionKeys=" + politicalDivisionKeys +
+				", annualIncome=" + annualIncome +
+				", mortgageInterest=" + mortgageInterest +
+				", realPropertyMarketValue=" + realPropertyMarketValue +
+				'}';
 	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "TaxPayerProfile [postalCode=" + postalCode + ", politicalDivisionKeys=" + politicalDivisionKeys
-				+ ", annualIncome=" + annualIncome + ", mortgageInterest=" + mortgageInterest + "]";
-	}
-
 }
