@@ -1,1 +1,2 @@
-Update following changes to service impl
+Add consumerExpenditureProfile to web.taxburden.model.TaxPayerProfile
+Move to AWS
