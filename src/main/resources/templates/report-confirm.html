@@ -28,7 +28,7 @@
             <tr th:each="te : ${taxBurdenReport.taxEntries}">
                 <td th:text="${te.politicalDivision.description}">DEFAULT</td>
                 <td th:text="${te.taxType}">DEFAULT</td>
-                <td th:text="\$${te.amount.amount}">DEFAULT</td>
+                <td th:text="${te.amount.amount}">DEFAULT</td>
             </tr>
             </tbody>
         </table>
