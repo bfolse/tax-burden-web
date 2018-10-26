@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<!--
 <html>
 <head>
     <title>Getting Started: Serving Web Content</title>
@@ -6,5 +7,46 @@
 </head>
 <body>
     <p>Start <a href="/geo?postalCode=30306">here</a></p>
+</body>
+</html>
+-->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Total Tax Burden</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/static/css/bootstrap.min.css}"/>
+    <link href="css/core.css" rel="stylesheet" media="screen" th:href="@{/static/css/core.css}" />
+</head>
+<body>
+<div th:replace="fragments/header :: header">
+    <!-- ============================================================================ -->
+    <!-- This content is only used for static prototyping purposes (natural templates)-->
+    <!-- and is therefore entirely optional, as this markup fragment will be included -->
+    <!-- from "fragments/header.html" at runtime.                                     -->
+    <!-- ============================================================================ -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Total Tax Burden</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="hero-unit">
+        <h1>Total Tax Burden</h1>
+        <p>
+            Welcome to Total Tax Burden!
+        </p>
+        <p>Start <a href="/geo">here</a></p>
+    </div>
+    <div th:replace="fragments/footer :: footer">&copy; 2018 Total Tax Burden</div>
+</div>
 </body>
 </html>
