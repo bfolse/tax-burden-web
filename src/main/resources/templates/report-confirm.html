@@ -1,22 +1,25 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Total Tax Burden - View Report</title>
 </head>
 <body>
-	<h1>Result</h1>
-    <p th:text="'postalCode: ' + ${taxPayerProfile.postalCode}" />
-    <p th:text="'politicalDivisions: ' + ${taxPayerProfile.politicalDivisionKeys}" />
-<!--
-    <p th:text="'taxBurdenReport: ' + ${taxBurdenReport}" />
--->
-<!--  Add table for taxBurdenReport  -->
+<div layout:fragment="content">
+	<h1>Tax Burden Report</h1>
+    <p th:text="'Postal Code: ' + ${taxPayerProfile.postalCode}" />
+    <p th:text="'Political Divisions: ' + ${taxPayerProfile.politicalDivisionKeys}" />
+    <p th:text="'Annual Income: ' + ${taxPayerProfile.annualIncome.amount}" />
+    <p th:text="'Mortgage Interest: ' + ${taxPayerProfile.mortgageInterest.amount}" />
+    <p th:text="'Real Property Market Value: ' + ${taxPayerProfile.realPropertyMarketValue.amount}" />
+
     <div class="taxBurdenReport" th:unless="${#lists.isEmpty(taxBurdenReport.taxEntries)}">
 
         <h2>Tax Burden Report</h2>
 
-        <table>
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Political Division</th>
@@ -33,6 +36,7 @@
             </tbody>
         </table>
     </div>
-    <a href="/geo">Submit another</a>
+    <a href="/geo" class="btn btn-default">Try again</a>
+</div>
 </body>
 </html>

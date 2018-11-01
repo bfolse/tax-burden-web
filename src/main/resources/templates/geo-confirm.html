@@ -1,14 +1,18 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Total Tax Burden - Confirm Location</title>
 </head>
 <body>
+<div layout:fragment="content">
 	<h1>Result</h1>
     <p th:text="'postalCode: ' + ${taxPayerProfile.postalCode}" />
     <p th:text="'politicalDivisions: ' + ${taxPayerProfile.politicalDivisionKeys}" />
-    <a href="/geo">Submit another</a>
-    <a href="/report">Tax Burden Report</a>
+    <a href="/geo" class="btn btn-default">Choose another location</a>
+    <a href="/report" class="btn btn-default">Get my Tax Burden Report</a>
+</div>
 </body>
 </html>

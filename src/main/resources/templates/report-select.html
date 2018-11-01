@@ -1,11 +1,14 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Total Tax Burden - Set Attributes</title>
 </head>
 <body>
-	<h1>Form</h1>
+<div layout:fragment="content">
+	<h1>Answer these questions:</h1>
     <form action="#" th:action="@{/report}" th:object="${taxPayerProfile}" method="post">
     	<p>postalCode: <input type="text" th:field="*{postalCode}" /></p>
     	<p>politicalDivisionKeys: <input type="text" th:field="*{politicalDivisionKeys}" /></p>
@@ -13,5 +16,7 @@
     	<p>mortgageInterest: <input type="text" th:field="*{mortgageInterest.amount}" /></p>
         <p>realPropertyMarketValue: <input type="text" th:field="*{realPropertyMarketValue.amount}" /></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form></body>
+    </form>
+</div>
+</body>
 </html>
