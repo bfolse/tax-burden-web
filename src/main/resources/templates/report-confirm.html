@@ -8,12 +8,12 @@
 </head>
 <body>
 <div layout:fragment="content">
-	<h1>Tax Burden Report</h1>
+	<h2>Tax Payer Profile</h2>
     <p th:text="'Postal Code: ' + ${taxPayerProfile.postalCode}" />
     <p th:text="'Political Divisions: ' + ${taxPayerProfile.politicalDivisionKeys}" />
-    <p th:text="'Annual Income: ' + ${taxPayerProfile.annualIncome.amount}" />
-    <p th:text="'Mortgage Interest: ' + ${taxPayerProfile.mortgageInterest.amount}" />
-    <p th:text="'Real Property Market Value: ' + ${taxPayerProfile.realPropertyMarketValue.amount}" />
+    <p th:text="'Annual Income: $' + ${taxPayerProfile.annualIncome.amount}" />
+    <p th:text="'Mortgage Interest: $' + ${taxPayerProfile.mortgageInterest.amount}" />
+    <p th:text="'Real Property Market Value: $' + ${taxPayerProfile.realPropertyMarketValue.amount}" />
 
     <div class="taxBurdenReport" th:unless="${#lists.isEmpty(taxBurdenReport.taxEntries)}">
 
@@ -31,7 +31,7 @@
             <tr th:each="te : ${taxBurdenReport.taxEntries}">
                 <td th:text="${te.politicalDivision.description}">DEFAULT</td>
                 <td th:text="${te.taxType}">DEFAULT</td>
-                <td th:text="${te.amount.amount}">DEFAULT</td>
+                <td th:text="'$' + ${te.amount.amount}">DEFAULT</td>
             </tr>
             </tbody>
         </table>

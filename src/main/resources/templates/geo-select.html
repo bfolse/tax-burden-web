@@ -8,10 +8,13 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <h1>Choose Your Location</h1>
+    <h2>Choose Your Location</h2>
     <form action="#" th:action="@{/geo}" th:object="${taxPayerProfile}" method="post">
-        <p>postalCode: <input type="text" th:field="*{postalCode}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPostalCode" class="sr-only">Zip Code</label>
+            <input type="text" id="inputPostalCode" class="form-control" placeholder="Zip Code" th:field="*{postalCode}" required="required" autofocus="autofocus"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
     </form>
 </div>
 </body>

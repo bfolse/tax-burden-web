@@ -8,14 +8,22 @@
 </head>
 <body>
 <div layout:fragment="content">
-	<h1>Answer these questions:</h1>
+	<h2>Answer these questions:</h2>
     <form action="#" th:action="@{/report}" th:object="${taxPayerProfile}" method="post">
-    	<p>postalCode: <input type="text" th:field="*{postalCode}" /></p>
-    	<p>politicalDivisionKeys: <input type="text" th:field="*{politicalDivisionKeys}" /></p>
-    	<p>annualIncome: <input type="text" th:field="*{annualIncome.amount}" /></p>
-    	<p>mortgageInterest: <input type="text" th:field="*{mortgageInterest.amount}" /></p>
-        <p>realPropertyMarketValue: <input type="text" th:field="*{realPropertyMarketValue.amount}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <div class="form-group">
+            <label for="annualIncome">Annual Income</label>
+            <input type="text" id="annualIncome" th:field="*{annualIncome.amount}" class="form-control" placeholder="What is your annual income?" required="required" autofocus="autofocus"/>
+        </div>
+        <div class="form-group">
+            <label for="mortgageInterest">Mortgage Interest</label>
+            <input type="text" id="mortgageInterest" th:field="*{mortgageInterest.amount}" class="form-control" placeholder="How much mortgage interest do you pay per year?" required="required" autofocus="autofocus"/>
+        </div>
+        <div class="form-group">
+            <label for="realPropertyMarketValue">Real Property Market Value</label>
+            <input type="text" id="realPropertyMarketValue" th:field="*{realPropertyMarketValue.amount}" class="form-control" placeholder="What is the market value of all real estate you own?" required="required" autofocus="autofocus"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="reset">Reset</button>
     </form>
 </div>
 </body>

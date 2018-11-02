@@ -8,11 +8,21 @@
 </head>
 <body>
 <div layout:fragment="content">
-	<h1>Result</h1>
-    <p th:text="'postalCode: ' + ${taxPayerProfile.postalCode}" />
-    <p th:text="'politicalDivisions: ' + ${taxPayerProfile.politicalDivisionKeys}" />
-    <a href="/geo" class="btn btn-default">Choose another location</a>
-    <a href="/report" class="btn btn-default">Get my Tax Burden Report</a>
+	<h2>Selected Location</h2>
+    <table class="table table-sm">
+        <tbody>
+        <tr>
+            <td>Zip Code</td>
+            <td th:text="${taxPayerProfile.postalCode}"></td>
+        </tr>
+        <tr>
+            <td>Political Divisions</td>
+            <td th:text="${taxPayerProfile.politicalDivisionKeys}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="/geo" role="button">Choose another location</a>
+    <a class="btn btn-primary" href="/report" role="button">Get my Tax Burden Report</a>
 </div>
 </body>
 </html>
