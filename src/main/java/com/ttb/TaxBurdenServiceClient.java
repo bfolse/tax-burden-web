@@ -1,6 +1,6 @@
 package com.ttb;
 
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 
 import com.ttb.service.taxburden.TaxBurdenServiceREST;
 
