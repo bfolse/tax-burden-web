@@ -12,8 +12,9 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <h2>Choose Your Location</h2>
-    <form action="#" th:action="@{/geo}" th:object="${taxPayerProfile}" method="post">
+    <!-- Postal Code Form -->
+    <h2>Enter Your Postal Code</h2>
+    <form action="#" th:action="@{/geo}" th:object="${location}" method="post">
         <div class="form-group mx-sm-3 mb-2">
             <label for="inputPostalCode" class="sr-only">Zip Code</label>
             <input type="text" id="inputPostalCode" class="form-control" placeholder="Zip Code" th:field="*{postalCode}" required="required" autofocus="autofocus"/>
@@ -21,17 +22,24 @@
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>
 
-    <!--map div-->
-    <!--<div id="map"></div>-->
+    <!-- map -->
+    <div id="map"></div>
 
-    <!--our form-->
-    <!--<h2>Chosen Location</h2>-->
-    <!--<form method="post">-->
-        <!--<input type="text" id="lat" readonly="yes"/><br/>-->
-        <!--<input type="text" id="lng" readonly="yes"/>-->
-    <!--</form>-->
+    <!-- Latitude/Longitude Form -->
+    <h2>Chose Location from Map</h2>
+    <form action="#" th:action="@{/geo}" th:object="${location}" method="post">
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="lat" class="sr-only">Latitude</label>
+            <!--<input type="text" id="lat" readonly="yes"/><br/>-->
+            <input type="text" id="lat" class="form-control" placeholder="Latitude" th:field="*{coordinate.latitude}" required="required" autofocus="autofocus"/>
+            <label for="lng" class="sr-only">Longitude</label>
+            <!--<input type="text" id="lng" readonly="yes"/>-->
+            <input type="text" id="lng" class="form-control" placeholder="Longitude" th:field="*{coordinate.longitude}" required="required" autofocus="autofocus"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
 
-    <!--<script type="text/javascript" src="js/map.js"></script>-->
+    <script type="text/javascript" src="js/map.js"></script>
 </div>
 </body>
 </html>
