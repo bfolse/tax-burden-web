@@ -1,6 +1,11 @@
 package com.ttb.web.taxburden.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +14,8 @@ public class TaxBurdenReport {
     private Date timestamp;
     private TaxPayerProfile taxPayerProfile;
     private List<TaxEntry> taxEntries;
+
+	private static final Logger logger = LoggerFactory.getLogger(TaxBurdenReport.class);
 
     /**
 	 * 
@@ -103,6 +110,20 @@ public class TaxBurdenReport {
 	 */
 	public void setTaxEntries(List<TaxEntry> taxEntries) {
 		this.taxEntries = taxEntries;
+	}
+
+	public MonetaryAmount getTaxEntriesTotal() {
+		BigDecimal total = new BigDecimal(0.0);
+		Currency currency = Currency.getInstance(MonetaryAmount.DEFAULT_CURRENCY_CODE);
+		logger.debug("taxEntries.size: " + taxEntries.size());
+		if (taxEntries != null && taxEntries.size() > 0) {
+			for (TaxEntry taxEntry : taxEntries) {
+				total = total.add(taxEntry.getAmount().getAmount());
+			}
+			currency = taxEntries.get(0).getAmount().getCurrency();
+		}
+		logger.debug("taxEntriesTotal: " + total);
+		return new MonetaryAmount(currency, total);
 	}
 
 	/* (non-Javadoc)

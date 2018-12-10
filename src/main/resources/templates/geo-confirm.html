@@ -9,19 +9,11 @@
 <body>
 <div layout:fragment="content">
 	<h2>Selected Location</h2>
-    <table class="table table-sm">
+    <table class="table table-sm" title="Political Divisions">
         <tbody>
-            <tr>
-                <td>Zip Code</td>
-                <td th:text="${taxPayerProfile.postalCode}"></td>
-            </tr>
-            <tr>
-                <td>Political Divisions</td>
-                <td th:text="${taxPayerProfile.politicalDivisions}"></td>
-                <tr th:each="pd : ${taxPayerProfile.politicalDivisions}">
-                    <td th:text="${pd.name}"></td>
-                    <td th:text="${pd.type}"></td>
-                </tr>
+            <tr th:each="pd : ${taxPayerProfile.politicalDivisions}">
+                <td th:text="${pd.name}"></td>
+                <td th:text="${pd.type}"></td>
             </tr>
         </tbody>
     </table>

@@ -8,33 +8,55 @@
 </head>
 <body>
 <div layout:fragment="content">
-	<h2>Tax Payer Profile</h2>
-    <p th:text="'Postal Code: ' + ${taxPayerProfile.postalCode}" />
-    <p th:text="'Political Divisions: ' + ${taxPayerProfile.politicalDivisions}" />
-    <p th:text="'Annual Income: $' + ${taxPayerProfile.annualIncome.amount}" />
-    <p th:text="'Mortgage Interest: $' + ${taxPayerProfile.mortgageInterest.amount}" />
-    <p th:text="'Real Property Market Value: $' + ${taxPayerProfile.realPropertyMarketValue.amount}" />
-
-    <div class="taxBurdenReport" th:unless="${#lists.isEmpty(taxBurdenReport.taxEntries)}">
-
+    <div class="container">
+        <h2>Tax Payer Profile</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Political Divisions</h3>
+                <table title="Political Divisions" class="table table-sm">
+                    <tr th:each="pd : ${taxPayerProfile.politicalDivisions}">
+                        <td th:text="${pd.name}"></td>
+                        <td th:text="${pd.type}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h3>Tax Payer Data</h3>
+                <table title="Tax Payer Data" class="table table-sm">
+                    <tr><td>Annual Income</td><td th:text="'$'+${taxPayerProfile.annualIncome.amount}" /></tr>
+                    <tr><td>Mortgage Interest</td><td th:text="'$'+${taxPayerProfile.mortgageInterest.amount}" />
+                    <tr><td>Real Property Market Value</td><td th:text="'$'+${taxPayerProfile.realPropertyMarketValue.amount}" />
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container" th:unless="${#lists.isEmpty(taxBurdenReport.taxEntries)}">
         <h2>Tax Burden Report</h2>
-
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Political Division</th>
-                <th>Tax Type</th>
-                <th>Amount</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="te : ${taxBurdenReport.taxEntries}">
-                <td th:text="${te.politicalDivision.description}">DEFAULT</td>
-                <td th:text="${te.taxType}">DEFAULT</td>
-                <td th:text="'$' + ${te.amount.amount}">DEFAULT</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-md-4">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Political Division</th>
+                        <th>Tax Type</th>
+                        <th>Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="te : ${taxBurdenReport.taxEntries}">
+                        <td th:text="${te.politicalDivision.description}">DEFAULT</td>
+                        <td th:text="${te.taxType}">DEFAULT</td>
+                        <td th:text="'$' + ${te.amount.amount}">DEFAULT</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>TOTAL</td>
+                        <td th:text="'$' + ${taxBurdenReport.taxEntriesTotal.amount}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <a href="/geo" class="btn btn-default">Try again</a>
 </div>

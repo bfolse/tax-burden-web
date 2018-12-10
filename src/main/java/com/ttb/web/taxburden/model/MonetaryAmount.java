@@ -7,7 +7,7 @@ public class MonetaryAmount {
 	private Currency currency;
 	private BigDecimal amount;
 	
-	private final String DEFAULT_CURRENCY_CODE = "USD";
+	public static final String DEFAULT_CURRENCY_CODE = "USD";
 	
 	/**
 	 * 
