@@ -10,7 +10,7 @@
 <div layout:fragment="content">
 	<h2>Tax Payer Profile</h2>
     <p th:text="'Postal Code: ' + ${taxPayerProfile.postalCode}" />
-    <p th:text="'Political Divisions: ' + ${taxPayerProfile.politicalDivisionKeys}" />
+    <p th:text="'Political Divisions: ' + ${taxPayerProfile.politicalDivisions}" />
     <p th:text="'Annual Income: $' + ${taxPayerProfile.annualIncome.amount}" />
     <p th:text="'Mortgage Interest: $' + ${taxPayerProfile.mortgageInterest.amount}" />
     <p th:text="'Real Property Market Value: $' + ${taxPayerProfile.realPropertyMarketValue.amount}" />

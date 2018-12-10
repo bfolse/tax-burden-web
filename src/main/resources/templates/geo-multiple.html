@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}">
+<head>
+    <title>Total Tax Burden - Select from Multiple Political Divisions</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>Your selected location spans multiple political boundaries.</h2>
+    <form action="#" th:action="@{/geomultiple}" th:object="${politicalDivisionSelectForm}" method="post">
+        <div class="form-group mx-sm-3 mb-2">
+            <!-- County -->
+            <label for="selectCounty" th:if="${COUNTY}">County</label>
+            <select th:if="${COUNTY}" th:field="*{selectedCounty}" id="selectCounty" class="form-control" required="required" autofocus="autofocus">
+                <option value=""> Choose a County </option>
+                <option th:each="county : ${COUNTY}"
+                        th:value="${county.fips}"
+                        th:utext="${county.name}"/>
+            </select>
+            <!-- City -->
+            <label for="selectCity" th:if="${CITY}">City</label>
+            <select th:if="${CITY}" th:field="*{selectedCity}" id="selectCity" class="form-control" required="required" autofocus="autofocus">
+                <option value=""> Choose a City </option>
+                <option th:each="city : ${CITY}"
+                        th:value="${city.fips}"
+                        th:utext="${city.name}"/>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+</div>
+</body>
+</html>

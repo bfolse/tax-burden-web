@@ -11,18 +11,22 @@
 	<h2>Selected Location</h2>
     <table class="table table-sm">
         <tbody>
-        <tr>
-            <td>Zip Code</td>
-            <td th:text="${taxPayerProfile.postalCode}"></td>
-        </tr>
-        <tr>
-            <td>Political Divisions</td>
-            <td th:text="${taxPayerProfile.politicalDivisionKeys}"></td>
-        </tr>
+            <tr>
+                <td>Zip Code</td>
+                <td th:text="${taxPayerProfile.postalCode}"></td>
+            </tr>
+            <tr>
+                <td>Political Divisions</td>
+                <td th:text="${taxPayerProfile.politicalDivisions}"></td>
+                <tr th:each="pd : ${taxPayerProfile.politicalDivisions}">
+                    <td th:text="${pd.name}"></td>
+                    <td th:text="${pd.type}"></td>
+                </tr>
+            </tr>
         </tbody>
     </table>
     <a class="btn btn-primary" href="/geo" role="button">Choose another location</a>
-    <a class="btn btn-primary" href="/report" role="button">Get my Tax Burden Report</a>
+    <a class="btn btn-primary" href="/report" role="button">Continue</a>
 </div>
 </body>
 </html>
