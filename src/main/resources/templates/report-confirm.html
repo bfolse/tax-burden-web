@@ -58,6 +58,10 @@
             </div>
         </div>
     </div>
+    <div class="container" th:if="${#lists.isEmpty(taxBurdenReport.taxEntries)}">
+        <h2>Tax Burden Report</h2>
+        <p>No tax data available for your location. We're working on expanding our coverage, so check back later.</p>
+    </div>
     <a href="/geo" class="btn btn-default">Try again</a>
 </div>
 </body>

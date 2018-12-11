@@ -27,6 +27,14 @@
                         th:value="${city.fips}"
                         th:utext="${city.name}"/>
             </select>
+            <!-- State -->
+            <label for="selectState" th:if="${STATE}">State</label>
+            <select th:if="${STATE}" th:field="*{selectedState}" id="selectState" class="form-control" required="required" autofocus="autofocus">
+                <option value=""> Choose a State </option>
+                <option th:each="state : ${STATE}"
+                        th:value="${state.fips}"
+                        th:utext="${state.name}"/>
+            </select>
         </div>
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>

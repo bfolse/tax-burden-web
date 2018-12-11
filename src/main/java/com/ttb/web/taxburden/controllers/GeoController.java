@@ -1,9 +1,6 @@
 package com.ttb.web.taxburden.controllers;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.ttb.web.taxburden.model.*;
 import org.slf4j.Logger;
@@ -24,6 +21,7 @@ public class GeoController {
 	private static final Logger logger = LoggerFactory.getLogger(GeoController.class);
     private static String COUNTY_TYPE = "COUNTY";
     private static String CITY_TYPE = "CITY";
+    private static String STATE_TYPE = "STATE";
 
 	@Autowired
 	TaxBurdenServiceClient taxBurdenServiceClient;
@@ -77,6 +75,9 @@ public class GeoController {
         if (politicalDivisionSelectForm.getSelectedCity() != null) {
             taxPayerProfile.getPoliticalDivisions().removeIf(pd -> pd.getType().equals(CITY_TYPE) && !pd.getFips().equals(politicalDivisionSelectForm.getSelectedCity()));
         }
+        if (politicalDivisionSelectForm.getSelectedState() != null) {
+            taxPayerProfile.getPoliticalDivisions().removeIf(pd -> pd.getType().equals(STATE_TYPE) && !pd.getFips().equals(politicalDivisionSelectForm.getSelectedState()));
+        }
         return "geo-confirm";
     }
 
@@ -85,7 +86,7 @@ public class GeoController {
         @param List<PoliticalDivision> politicalDivisions
         @return Map or null if no multiples
      */
-    private static Map<String, List<PoliticalDivision>> toTypeMultiplesMap(List<PoliticalDivision> politicalDivisions) {
+    private Map<String, List<PoliticalDivision>> toTypeMultiplesMap(List<PoliticalDivision> politicalDivisions) {
         Map<String, List<PoliticalDivision>> typeMap = new HashMap<String, List<PoliticalDivision>>();
         boolean multiples = false;
         for (PoliticalDivision politicalDivision : politicalDivisions) {
@@ -102,9 +103,11 @@ public class GeoController {
             typeMap = null;
         } else {
             // remove non multiples
-            for (String type : typeMap.keySet()) {
+            Iterator<String> iterator = typeMap.keySet().iterator();
+            while(iterator.hasNext()) {
+                String type = iterator.next();
                 if (typeMap.get(type).size() <= 1) {
-                    typeMap.remove(type);
+                    iterator.remove();
                 }
             }
         }
