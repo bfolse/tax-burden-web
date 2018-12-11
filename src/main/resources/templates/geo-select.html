@@ -12,34 +12,43 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <!-- Postal Code Form -->
-    <h2>Enter Your Postal Code</h2>
-    <form action="#" th:action="@{/geo}" th:object="${location}" method="post">
-        <div class="form-group mx-sm-3 mb-2">
-            <label for="inputPostalCode" class="sr-only">Zip Code</label>
-            <input type="text" id="inputPostalCode" class="form-control" placeholder="Zip Code" th:field="*{postalCode}" required="required" autofocus="autofocus"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Postal Code Form -->
+                <h2>Enter Your Postal Code</h2>
+                <form action="#" th:action="@{/geo}" th:object="${location}" method="post">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="inputPostalCode" class="sr-only">Zip Code</label>
+                        <input type="text" id="inputPostalCode" class="form-control" placeholder="Zip Code" th:field="*{postalCode}" required="required" autofocus="autofocus"/>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Latitude/Longitude Form -->
+                <h2>Chose Location from Map</h2>
 
-    <!-- map -->
-    <div id="map"></div>
+                <!-- map -->
+                <div id="map"></div>
 
-    <!-- Latitude/Longitude Form -->
-    <h2>Chose Location from Map</h2>
-    <form action="#" th:action="@{/geo}" th:object="${location}" method="post">
-        <div class="form-group mx-sm-3 mb-2">
-            <label for="lat" class="sr-only">Latitude</label>
-            <!--<input type="text" id="lat" readonly="yes"/><br/>-->
-            <input type="text" id="lat" class="form-control" placeholder="Latitude" th:field="*{coordinate.latitude}" required="required" autofocus="autofocus"/>
-            <label for="lng" class="sr-only">Longitude</label>
-            <!--<input type="text" id="lng" readonly="yes"/>-->
-            <input type="text" id="lng" class="form-control" placeholder="Longitude" th:field="*{coordinate.longitude}" required="required" autofocus="autofocus"/>
+                <form action="#" th:action="@{/geo}" th:object="${location}" method="post">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="lat" class="sr-only">Latitude</label>
+                        <!--<input type="text" id="lat" readonly="yes"/><br/>-->
+                        <input type="text" id="lat" class="form-control" placeholder="Latitude" th:field="*{coordinate.latitude}" required="required" autofocus="autofocus"/>
+                        <label for="lng" class="sr-only">Longitude</label>
+                        <!--<input type="text" id="lng" readonly="yes"/>-->
+                        <input type="text" id="lng" class="form-control" placeholder="Longitude" th:field="*{coordinate.longitude}" required="required" autofocus="autofocus"/>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+                <script type="text/javascript" src="js/map.js"></script>
+            </div>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
-
-    <script type="text/javascript" src="js/map.js"></script>
+    </div>
 </div>
 </body>
 </html>
