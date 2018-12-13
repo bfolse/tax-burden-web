@@ -49,6 +49,7 @@ public class GeoController {
         }
         List<PoliticalDivision> webPoliticalDivisions = TaxPayerProfile.toWebPoliticalDivisions(servicePoliticalDivisions);
         taxPayerProfile.setPoliticalDivisions(webPoliticalDivisions);
+
         // Multiples per type?
         Map<String, List<PoliticalDivision>> typeMap = toTypeMultiplesMap(webPoliticalDivisions);
         if (typeMap != null) {
