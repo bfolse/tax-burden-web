@@ -1,14 +1,27 @@
 package com.ttb.web.taxburden.model;
 
+import com.ttb.service.taxburden.domain.TaxFilingStatus;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class TaxPayerProfile {
+
+	public static final String BASIC_CONSUMER_EXPENDITURE_PROFILE_KEY = "BASIC";
+
+	private String taxPayerProfileKey;
 	private String postalCode;
 	private List<PoliticalDivision> politicalDivisions;
 	private MonetaryAmount annualIncome;
 	private MonetaryAmount mortgageInterest;
 	private MonetaryAmount realPropertyMarketValue;
+	private String consumerExpenditureProfileKey;
+	private TaxFilingStatus taxFilingStatus = TaxFilingStatus.SINGLE;
+	private MonetaryAmount preTaxContributions;
+	private MonetaryAmount otherItemizedDeductions;
+	private Integer dependents;
 
 	/**
 	 * 
@@ -37,17 +50,45 @@ public class TaxPayerProfile {
 
 	/**
 	 * @param postalCode
-	 * @param politicalDivisionKeys
+	 * @param politicalDivisions
 	 * @param annualIncome
 	 * @param mortgageInterest
 	 */
-	public TaxPayerProfile(String postalCode, List<PoliticalDivision> politicalDivisionKeys, MonetaryAmount annualIncome,
+	public TaxPayerProfile(String postalCode, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome,
 						   MonetaryAmount mortgageInterest) {
 		super();
 		this.postalCode = postalCode;
-		this.politicalDivisions = politicalDivisionKeys;
+		this.politicalDivisions = politicalDivisions;
 		this.annualIncome = annualIncome;
 		this.mortgageInterest = mortgageInterest;
+	}
+
+	public TaxPayerProfile(String postalCode, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {
+		super();
+		this.postalCode = postalCode;
+		this.politicalDivisions = politicalDivisions;
+		this.annualIncome = annualIncome;
+		this.mortgageInterest = mortgageInterest;
+		this.realPropertyMarketValue = realPropertyMarketValue;
+		this.taxFilingStatus = taxFilingStatus;
+		this.preTaxContributions = preTaxContributions;
+		this.otherItemizedDeductions = otherItemizedDeductions;
+		this.dependents = dependents;
+	}
+
+	public TaxPayerProfile(String taxPayerProfileKey, String postalCode, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {
+		super();
+		this.taxPayerProfileKey = taxPayerProfileKey;
+		this.postalCode = postalCode;
+		this.politicalDivisions = politicalDivisions;
+		this.annualIncome = annualIncome;
+		this.mortgageInterest = mortgageInterest;
+		this.realPropertyMarketValue = realPropertyMarketValue;
+		this.consumerExpenditureProfileKey = consumerExpenditureProfileKey;
+		this.taxFilingStatus = taxFilingStatus;
+		this.preTaxContributions = preTaxContributions;
+		this.otherItemizedDeductions = otherItemizedDeductions;
+		this.dependents = dependents;
 	}
 
 	/**
@@ -55,18 +96,59 @@ public class TaxPayerProfile {
 	 */
 	public TaxPayerProfile(com.ttb.service.taxburden.domain.TaxPayerProfile clientTaxPayerProfile) {
 		super();
+		this.taxPayerProfileKey = clientTaxPayerProfile.getTaxPayerProfileKey();
 		this.postalCode = clientTaxPayerProfile.getPostalCode();
 		this.politicalDivisions = toWebPoliticalDivisions(clientTaxPayerProfile.getPoliticalDivisions());
 		this.annualIncome = new MonetaryAmount(clientTaxPayerProfile.getAnnualIncome());
 		this.mortgageInterest = new MonetaryAmount(clientTaxPayerProfile.getMortgageInterest());
+		this.realPropertyMarketValue = new MonetaryAmount(clientTaxPayerProfile.getRealPropertyMarketValue());
+		this.consumerExpenditureProfileKey = clientTaxPayerProfile.getConsumerExpenditureProfileKey();
+		this.taxFilingStatus = clientTaxPayerProfile.getTaxFilingStatus();
+		this.preTaxContributions = new MonetaryAmount(clientTaxPayerProfile.getPreTaxContributions());
+		this.otherItemizedDeductions = new MonetaryAmount(clientTaxPayerProfile.getOtherItemizedDeductions());
+		this.dependents = clientTaxPayerProfile.getDependents();
 	}
 
 	/**
 	 * @return com.ttb.service.taxburden.domain.TaxPayerProfile
 	 */
 	public com.ttb.service.taxburden.domain.TaxPayerProfile toClientTaxPayerProfile() {
-		return new com.ttb.service.taxburden.domain.TaxPayerProfile(this.postalCode, toServicePoliticalDivisions(this.politicalDivisions),
-				this.annualIncome.toClientMonetaryAmount(), this.mortgageInterest.toClientMonetaryAmount(), this.realPropertyMarketValue.toClientMonetaryAmount());
+		// Handle nulls
+		if (this.annualIncome == null) {
+			this.annualIncome = new MonetaryAmount(BigDecimal.ZERO);
+		}
+		if (this.mortgageInterest == null) {
+			this.mortgageInterest = new MonetaryAmount(BigDecimal.ZERO);
+		}
+		if (this.realPropertyMarketValue == null) {
+			this.realPropertyMarketValue = new MonetaryAmount(BigDecimal.ZERO);
+		}
+		if (this.preTaxContributions == null) {
+			this.preTaxContributions = new MonetaryAmount(BigDecimal.ZERO);
+		}
+		if (this.otherItemizedDeductions == null) {
+			this.otherItemizedDeductions = new MonetaryAmount(BigDecimal.ZERO);
+		}
+		return new com.ttb.service.taxburden.domain.TaxPayerProfile(this.getTaxPayerProfileKey(),
+				null,
+				this.postalCode,
+				toServicePoliticalDivisions(this.politicalDivisions),
+				this.annualIncome.toClientMonetaryAmount(),
+				this.mortgageInterest.toClientMonetaryAmount(),
+				this.realPropertyMarketValue.toClientMonetaryAmount(),
+				this.getConsumerExpenditureProfileKey(),
+				this.getTaxFilingStatus(),
+				this.getPreTaxContributions().toClientMonetaryAmount(),
+				this.getOtherItemizedDeductions().toClientMonetaryAmount(),
+				this.getDependents());
+	}
+
+	public String getTaxPayerProfileKey() {
+		return taxPayerProfileKey;
+	}
+
+	public void setTaxPayerProfileKey(String taxPayerProfileKey) {
+		this.taxPayerProfileKey = taxPayerProfileKey;
 	}
 
 	/**
@@ -139,6 +221,46 @@ public class TaxPayerProfile {
 		this.realPropertyMarketValue = realPropertyMarketValue;
 	}
 
+	public String getConsumerExpenditureProfileKey() {
+		return consumerExpenditureProfileKey;
+	}
+
+	public void setConsumerExpenditureProfileKey(String consumerExpenditureProfileKey) {
+		this.consumerExpenditureProfileKey = consumerExpenditureProfileKey;
+	}
+
+	public TaxFilingStatus getTaxFilingStatus() {
+		return taxFilingStatus;
+	}
+
+	public void setTaxFilingStatus(TaxFilingStatus taxFilingStatus) {
+		this.taxFilingStatus = taxFilingStatus;
+	}
+
+	public MonetaryAmount getPreTaxContributions() {
+		return preTaxContributions;
+	}
+
+	public void setPreTaxContributions(MonetaryAmount preTaxContributions) {
+		this.preTaxContributions = preTaxContributions;
+	}
+
+	public MonetaryAmount getOtherItemizedDeductions() {
+		return otherItemizedDeductions;
+	}
+
+	public void setOtherItemizedDeductions(MonetaryAmount otherItemizedDeductions) {
+		this.otherItemizedDeductions = otherItemizedDeductions;
+	}
+
+	public Integer getDependents() {
+		return dependents;
+	}
+
+	public void setDependents(Integer dependents) {
+		this.dependents = dependents;
+	}
+
 	public static List<PoliticalDivision> toWebPoliticalDivisions(List<com.ttb.service.taxburden.domain.PoliticalDivision> servicePoliticalDivisions) {
 		List<PoliticalDivision> webPoliticalDivisions = new ArrayList<PoliticalDivision>();
 		if (servicePoliticalDivisions != null) {
@@ -157,30 +279,43 @@ public class TaxPayerProfile {
 		return servicePoliticalDivisions;
 	}
 
-	public boolean equals(Object object) {
-		if (this == object) return true;
-		if (object == null || getClass() != object.getClass()) return false;
-		if (!super.equals(object)) return false;
-		TaxPayerProfile that = (TaxPayerProfile) object;
-		return java.util.Objects.equals(postalCode, that.postalCode) &&
-				java.util.Objects.equals(politicalDivisions, that.politicalDivisions) &&
-				java.util.Objects.equals(annualIncome, that.annualIncome) &&
-				java.util.Objects.equals(mortgageInterest, that.mortgageInterest) &&
-				java.util.Objects.equals(realPropertyMarketValue, that.realPropertyMarketValue);
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof TaxPayerProfile)) return false;
+		TaxPayerProfile that = (TaxPayerProfile) o;
+		return Objects.equals(taxPayerProfileKey, that.taxPayerProfileKey) &&
+				Objects.equals(postalCode, that.postalCode) &&
+				Objects.equals(politicalDivisions, that.politicalDivisions) &&
+				Objects.equals(annualIncome, that.annualIncome) &&
+				Objects.equals(mortgageInterest, that.mortgageInterest) &&
+				Objects.equals(realPropertyMarketValue, that.realPropertyMarketValue) &&
+				Objects.equals(consumerExpenditureProfileKey, that.consumerExpenditureProfileKey) &&
+				taxFilingStatus == that.taxFilingStatus &&
+				Objects.equals(preTaxContributions, that.preTaxContributions) &&
+				Objects.equals(otherItemizedDeductions, that.otherItemizedDeductions) &&
+				Objects.equals(dependents, that.dependents);
 	}
 
+	@Override
 	public int hashCode() {
-		return java.util.Objects.hash(super.hashCode(), postalCode, politicalDivisions, annualIncome, mortgageInterest, realPropertyMarketValue);
+		return Objects.hash(taxPayerProfileKey, postalCode, politicalDivisions, annualIncome, mortgageInterest, realPropertyMarketValue, consumerExpenditureProfileKey, taxFilingStatus, preTaxContributions, otherItemizedDeductions, dependents);
 	}
 
-	@java.lang.Override
-	public java.lang.String toString() {
+	@Override
+	public String toString() {
 		return "TaxPayerProfile{" +
-				"postalCode='" + postalCode + '\'' +
+				"taxPayerProfileKey='" + taxPayerProfileKey + '\'' +
+				", postalCode='" + postalCode + '\'' +
 				", politicalDivisions=" + politicalDivisions +
 				", annualIncome=" + annualIncome +
 				", mortgageInterest=" + mortgageInterest +
 				", realPropertyMarketValue=" + realPropertyMarketValue +
+				", consumerExpenditureProfileKey='" + consumerExpenditureProfileKey + '\'' +
+				", taxFilingStatus=" + taxFilingStatus +
+				", preTaxContributions=" + preTaxContributions +
+				", otherItemizedDeductions=" + otherItemizedDeductions +
+				", dependents=" + dependents +
 				'}';
 	}
 }

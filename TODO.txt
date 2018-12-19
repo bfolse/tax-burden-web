@@ -1,2 +1,0 @@
-Add consumerExpenditureProfile to web.taxburden.model.TaxPayerProfile
-Move to AWS
