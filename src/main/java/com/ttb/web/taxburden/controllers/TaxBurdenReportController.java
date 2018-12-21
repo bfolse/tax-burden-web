@@ -36,7 +36,15 @@ public class TaxBurdenReportController {
     @PostMapping("/report")
     public String reportSubmit(@ModelAttribute TaxPayerProfile taxPayerProfile, Model model) {
     	logger.debug("taxPayerProfile: " + taxPayerProfile + " model: " + model);
-    	com.ttb.service.taxburden.domain.TaxBurdenReport clientTaxBurdenReport = taxBurdenServiceClient.createReport(taxPayerProfile.toClientTaxPayerProfile());
+
+		com.ttb.service.taxburden.domain.TaxBurdenReport clientTaxBurdenReport;
+		try {
+			clientTaxBurdenReport = taxBurdenServiceClient.createReport(taxPayerProfile.toClientTaxPayerProfile());
+		} catch (Exception e) {
+			logger.error("Error calling taxBurdenServiceClient#createReport with taxPayerProfile: " + taxPayerProfile, e);
+			model.addAttribute("hiddenError", e.toString());
+			return "error";
+		}
     	model.addAttribute("taxBurdenReport", new TaxBurdenReport(clientTaxBurdenReport));
         return "report-confirm";
     }

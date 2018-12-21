@@ -17,7 +17,7 @@ public class TaxPayerProfile {
 	private MonetaryAmount annualIncome;
 	private MonetaryAmount mortgageInterest;
 	private MonetaryAmount realPropertyMarketValue;
-	private String consumerExpenditureProfileKey;
+	private String consumerExpenditureProfileKey = BASIC_CONSUMER_EXPENDITURE_PROFILE_KEY;
 	private TaxFilingStatus taxFilingStatus = TaxFilingStatus.SINGLE;
 	private MonetaryAmount preTaxContributions;
 	private MonetaryAmount otherItemizedDeductions;

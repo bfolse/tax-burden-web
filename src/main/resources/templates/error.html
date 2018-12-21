@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}">
+<head>
+    <title>Total Tax Burden - Error</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>Oops, something went wrong! </h2>
+    <h2>Please try again later</h2>
+    <a href="/">Back to Home Page</a>
+    <div>
+        <p th:text="${hiddenError}"></p>
+    </div>
+</div>
+</body>
+</html>
