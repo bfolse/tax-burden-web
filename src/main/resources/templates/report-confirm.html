@@ -33,12 +33,13 @@
     <div class="container" th:unless="${#lists.isEmpty(taxBurdenReport.taxEntries)}">
         <h2>Tax Burden Report</h2>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>Political Division</th>
-                        <th>Tax Type</th>
+                        <th>Type</th>
+                        <th>Name</th>
                         <th>Amount</th>
                     </tr>
                     </thead>
@@ -46,12 +47,14 @@
                     <tr th:each="te : ${taxBurdenReport.taxEntries}">
                         <td th:text="${te.politicalDivision.description}">DEFAULT</td>
                         <td th:text="${te.taxType}">DEFAULT</td>
-                        <td th:text="'$' + ${te.amount.amount}">DEFAULT</td>
+                        <td th:text="${te.description}">DEFAULT</td>
+                        <td th:text="'$' + ${te.amount.amount}" style="text-align:right;">DEFAULT</td>
                     </tr>
                     <tr>
                         <td></td>
+                        <td></td>
                         <td>TOTAL</td>
-                        <td th:text="'$' + ${taxBurdenReport.taxEntriesTotal.amount}"></td>
+                        <td th:text="'$' + ${taxBurdenReport.taxEntriesTotal.amount}" style="text-align:right;"></td>
                     </tr>
                     </tbody>
                 </table>
