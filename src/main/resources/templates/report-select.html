@@ -11,18 +11,6 @@
 	<h2>Answer these questions:</h2>
     <form action="#" th:action="@{/report}" th:object="${taxPayerProfile}" method="post">
         <div class="form-group">
-            <label for="annualIncome">Annual Income</label>
-            <input type="text" id="annualIncome" th:field="*{annualIncome.amount}" class="form-control" placeholder="What is your annual income?" required="required" autofocus="autofocus"/>
-        </div>
-        <div class="form-group">
-            <label for="mortgageInterest">Mortgage Interest</label>
-            <input type="text" id="mortgageInterest" th:field="*{mortgageInterest.amount}" class="form-control" placeholder="How much mortgage interest do you pay per year?" required="required" autofocus="autofocus"/>
-        </div>
-        <div class="form-group">
-            <label for="realPropertyMarketValue">Real Property Market Value</label>
-            <input type="text" id="realPropertyMarketValue" th:field="*{realPropertyMarketValue.amount}" class="form-control" placeholder="What is the market value of all real estate you own?" required="required" autofocus="autofocus"/>
-        </div>
-        <div class="form-group">
             <label th:for="taxFilingStatusGroup">Tax Filing Status</label>
             <div th:id="taxFilingStatusGroup" th:each="taxFilingStatusOption : ${T(com.ttb.web.taxburden.model.TaxFilingStatus).values()}">
                 <input type="radio" th:id="${{taxFilingStatusOption}}" th:value="${{taxFilingStatusOption}}" th:field="*{taxFilingStatus}" />
@@ -30,16 +18,40 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="annualIncome">Annual Income</label>
+            <input type="text" id="annualIncome" th:field="*{annualIncome.amount}" class="form-control" required="required" autofocus="autofocus"
+                   placeholder="What is your annual income?"
+                   title="Gross Annual Income"/>
+        </div>
+        <div class="form-group">
             <label for="preTaxContributions">Pre-tax Contributions</label>
-            <input type="text" id="preTaxContributions" th:field="*{preTaxContributions.amount}" class="form-control" placeholder="What are your annual pre-tax deductions (401k or other retirement, medical insurance, etc.)?" required="required" autofocus="autofocus"/>
+            <input type="text" id="preTaxContributions" th:field="*{preTaxContributions.amount}" class="form-control" required="required" autofocus="autofocus"
+                   placeholder="What are your annual pre-tax deductions (401k or other retirement, medical insurance, etc.)?"
+                   title="Pre-tax Contributions or Adjustments to Income"/>
+        </div>
+        <div class="form-group">
+            <label for="mortgageInterest">Mortgage Interest</label>
+            <input type="text" id="mortgageInterest" th:field="*{mortgageInterest.amount}" class="form-control" required="required" autofocus="autofocus"
+                   placeholder="How much mortgage interest do you pay per year?"
+                   title="Mortgage Interest"/>
+        </div>
+        <div class="form-group">
+            <label for="realPropertyMarketValue">Real Property Market Value</label>
+            <input type="text" id="realPropertyMarketValue" th:field="*{realPropertyMarketValue.amount}" class="form-control" required="required" autofocus="autofocus"
+                   placeholder="What is the market value of all real estate you own?"
+                   title="Real Property Market Value"/>
         </div>
         <div class="form-group">
             <label for="otherItemizedDeductions">Other Itemized Deductions</label>
-            <input type="text" id="otherItemizedDeductions" th:field="*{otherItemizedDeductions.amount}" class="form-control" placeholder="What are your annual, non-mortgage interest, itemized deductions (charitable donations, student loan interest, qualified medical expenses, etc.?" required="required" autofocus="autofocus"/>
+            <input type="text" id="otherItemizedDeductions" th:field="*{otherItemizedDeductions.amount}" class="form-control" required="required" autofocus="autofocus"
+                   placeholder="What are your annual, non-mortgage interest, itemized deductions (charitable donations, qualified medical expenses, etc.)?"
+                   title="Other Itemized Deductions - Don't include mortgage interest or state/local income and property taxes"/>
         </div>
         <div class="form-group">
             <label for="dependents">Dependents</label>
-            <input type="text" id="dependents" th:field="*{dependents}" class="form-control" placeholder="How many dependents, including yourself, do you claim on your federal tax form?" required="required" autofocus="autofocus"/>
+            <input type="text" id="dependents" th:field="*{dependents}" class="form-control" required="required" autofocus="autofocus"
+                   placeholder="How many dependents, including yourself, do you claim on your federal tax form?"
+                    title="Dependents"/>
         </div>
         <button class="btn btn-primary" type="reset">Reset</button>
         <button class="btn btn-primary" type="submit">Submit</button>
