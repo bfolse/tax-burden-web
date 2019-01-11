@@ -11,31 +11,30 @@
     <link rel="icon" href="../../favicon.ico"/>
     <title>Total Tax Burden - Choose Location</title>
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/core.css" media="screen" th:href="@{css/core.css}"/>
-    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="css/core.css" media="screen" th:href="@{css/core.css}" />
+    <link rel="stylesheet" href="webjars/bootstrap/4.2.1/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
     <link rel="stylesheet" href="css/jumbotron.css"/>
     <link rel="stylesheet" href="css/sticky-footer.css"/>
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Total Tax Burden</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/">Total Tax Burden</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
     </div>
 </nav>
 <div class="container">
@@ -48,20 +47,14 @@
 </div>
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">&copy; 2018 Total Tax Burden</p>
+        <p class="text-muted">&copy; 2019 Total Tax Burden</p>
     </div>
 </footer>
-<!--
-<div class="navbar navbar-light navbar-fixed-bottom">
-    <div class="container">
-        <p class="navbar-text pull-left">&copy; 2018 Total Tax Burden</p>
-    </div>
-</div>
--->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.14.3/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
 <th:block layout:fragment="scripts"></th:block>

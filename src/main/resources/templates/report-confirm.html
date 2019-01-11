@@ -9,10 +9,10 @@
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <h2>Tax Payer Profile</h2>
+        <h3>Tax Payer Profile</h3>
         <div class="row">
-            <div class="col-md-4">
-                <h3>Political Divisions</h3>
+            <div class="col-md-5">
+                <h4>Political Divisions</h4>
                 <table title="Political Divisions" class="table table-sm">
                     <tr th:each="pd : ${taxPayerProfile.politicalDivisions}">
                         <td th:text="${pd.name}"></td>
@@ -20,8 +20,8 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-md-4">
-                <h3>Tax Payer Data</h3>
+            <div class="col-md-5">
+                <h4>Tax Payer Data</h4>
                 <table title="Tax Payer Data" class="table table-sm">
                     <tr><td>Annual Income</td><td th:text="'$'+${taxPayerProfile.annualIncome.amount}" /></tr>
                     <tr><td>Mortgage Interest</td><td th:text="'$'+${taxPayerProfile.mortgageInterest.amount}" />
@@ -35,9 +35,9 @@
         </div>
     </div>
     <div class="container" th:unless="${#lists.isEmpty(taxBurdenReport.taxEntries)}">
-        <h2>Tax Burden Report</h2>
+        <h3>Tax Burden Report</h3>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -69,7 +69,7 @@
         <h2>Tax Burden Report</h2>
         <p>No tax data available for your location. We're working on expanding our coverage, so check back later.</p>
     </div>
-    <a href="/geo" class="btn btn-default">Try again</a>
+    <a href="/geo" class="btn btn-primary">Try again</a>
 </div>
 </body>
 </html>
