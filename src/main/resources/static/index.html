@@ -5,85 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
     <title>Total Tax Burden</title>
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/core.css" media="screen" th:href="@{css/core.css}" />
     <link rel="stylesheet" href="webjars/bootstrap/4.2.1/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" href="css/jumbotron.css" th:href="@{css/jumbotron.css}"/>
-    <link rel="stylesheet" href="css/sticky-footer.css" th:href="@{css/sticky-footer.css}"/>
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-      }
+    <!-- Custom fonts for Creative template -->
+    <link rel="stylesheet" href="webjars/font-awesome/5.6.3/css/all.min.css" th:href="@{/webjars/font-awesome/5.6.3/css/all.min.css}" type="text/css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' type='text/css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' type='text/css'>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="webjars/Magnific-Popup/1.1.0/magnific-popup.css" th:href="@{/webjars/Magnific-Popup/1.1.0/magnific-popup.css}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/creative.min.css" th:href="@{css/creative.min.css}">
 </head>
 
 <body id="page-top">
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">Total Tax Burden</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#contact">Contact</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+<nav class="navbar navbar-expand-md navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Total Tax Burden</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#page-top">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#resources">Resources</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
     </div>
 </nav>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<header class="masthead">
-    <div class="jumbotron">
-        <div class="container">
-            <h1 class="display-3">Welcome to Total Tax Burden!</h1>
-            <p>Nobody likes taxes. But have you ever thought about how much you actually pay? Here's an easy way to find out. Just answer some simple questions and we'll give you a report with estimates for all the taxes you pay.
-                We value your privacy so we'll never ask you for any personally identifiable information.</p>
-            <p><a class="btn btn-primary btn-lg" href="/geo" role="button">Try it here &raquo;</a></p>
+<header class="masthead text-center text-white d-flex">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <h1 class="text-uppercase">
+                    <strong>Welcome to Total Tax Burden!</strong>
+                </h1>
+                <hr>
+            </div>
+            <div class="col-lg-10 mx-auto">
+                <p class="text-faded mb-5">Nobody likes taxes. But have you ever thought about how much you actually pay? Here's an easy way to find out. Just answer some simple questions and we'll give you a free Tax Burden Report&trade; with estimates for all the taxes you pay.
+                    We value your privacy so we'll never ask you for any personally identifiable information.</p>
+                <a class="btn btn-primary btn-xl js-scroll-trigger" href="/geo">Try it here &raquo;</a>
+            </div>
         </div>
     </div>
+</header>
+
+<!-- Resources Section -->
+<section id="resources">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <h2>Types of Taxes</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                <p>Do you know all the different types of taxes you pay?  You probably know a few, but there may be some you aren't aware of.</p>
+                <p><a class="js-scroll-trigger btn btn-secondary" href="#types" role="button">Find out more &raquo;</a></p>
             </div>
             <div class="col-md-4">
-                <h2>How we calculate your Total Tax Burden</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                <h2>Tax Burden Report&trade;</h2>
+                <p>Your Tax Burden Report&trade; provides a detailed list of all the taxes and the estimated amounts you will pay this year. Just give us some basic information and we'll do the rest.</p>
+                <p><a class="js-scroll-trigger btn btn-secondary" href="#report" role="button">Find out more &raquo;</a></p>
             </div>
             <div class="col-md-4">
-                <h2>TBD</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                <h2>Articles</h2>
+                <ul>
+                    <li>Coming Soon</li>
+                </ul>
+                <p><a class="js-scroll-trigger btn btn-secondary" href="#articles" role="button">See all &raquo;</a></p>
             </div>
         </div>
-        <hr>
     </div>
-</header>
+</section>
 
 <!-- About Section -->
 <section id="about">
@@ -94,16 +102,85 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <p>The goal of Total Tax Burden is to make make taxes imposed by government more transparent and to show the impact on the citizens who pay them.
-                Government does a good job of hiding and obfuscating taxes and we want to help level the playing field.  We hope to play a part in helping citizens make informed decisions.</p>
-                <p>We're not affiliated with any political party or organization.</p>
+            <div class="col-lg-12 mx-auto">
+                <p>Our goal is to make make taxes imposed by government more transparent. We want make it easy to understand the taxes you pay and how they impact you and every citizen who pays them.
+                    Government does a good job of hiding and obfuscating taxes and we want to help level the playing field.  We hope to play a part in helping citizens make informed decisions.</p>
+                <p>We are not affiliated with any political party or organization.</p>
+            </div>
+        </div>
+        <hr>
+    </div>
+</section>
+
+<!-- Tax Types Section -->
+<section id="types">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <h2 class="section-heading text-uppercase">Types of Taxes</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <p>You know about income taxes, you file your return every year.  You know about sales taxes if you look at your receipts.  And if you own a home
+                you probably pay property tax each year.  But did you know you pay tax every time you fill up your tank with gas?
+                And when was the last time you thought about the payroll taxes taken from your paycheck?</p>
+                <h3>Income Tax</h3>
+                <p>TODO</p>
+                <h3>Sales Tax</h3>
+                <p>TODO</p>
+                <h3>Property Tax</h3>
+                <p>TODO</p>
+                <h3>Payroll Tax</h3>
+                <p>TODO</p>
+                <h3>Fuel Tax</h3>
+                <p>TODO</p>
+                <h3>Corporate Tax</h3>
+                <p>TODO</p>
+                <h3>Capital Gains Tax</h3>
+                <p>TODO</p>
+                <h3>Inheritance and Estate Tax</h3>
+                <p>TODO</p>
+                <h3>Alcohol and Tobacco Tax</h3>
+                <p>TODO</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="contact">
+<!-- Tax Types Section -->
+<section id="report">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="section-heading text-uppercase">Tax Burden Report&trade;</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <p>TODO</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Tax Types Section -->
+<section id="articles">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="section-heading text-uppercase">Articles</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <p>TODO</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="bg-dark text-white">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -111,29 +188,34 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto">
+            <div class="col-lg-12 mx-auto">
                 <p>Comments, questions, suggestions? <a class="email" href="mailto:info@totaltaxburden.com">info@totaltaxburden.com</a></p>
             </div>
         </div>
     </div>
 </section>
 
-<footer class="footer">
+<footer class="footer bg-dark">
     <div class="container">
         <p class="text-muted">&copy; 2019 Total Tax Burden</p>
     </div>
 </footer>
 
-
-<!-- Bootstrap core JavaScript
-================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
-<script src="/webjars/jquery/3.2.1/jquery.min.js" th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
-<script src="webjars/popper.js/1.14.3/umd/popper.min.js" th:src="@{/webjars/popper.js/1.14.3/umd/popper.min.js}"></script>
+<script src="/webjars/jquery/3.3.1/jquery.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+<script src="/webjars/popper.js/1.14.3/umd/popper.min.js" th:src="@{/webjars/popper.js/1.14.3/umd/popper.min.js}"></script>
 <script src="/webjars/bootstrap/4.2.1/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="/webjars/jquery.easing/1.4.1/jquery.easing.min.js" th:src="@{/webjars/jquery.easing/1.4.1/jquery.easing.min.js}"></script>
+<script src="/webjars/scrollreveal/4.0.5/dist/scrollreveal.min.js" th:src="@{/webjars/scrollreveal/4.0.5/dist/scrollreveal.min.js}"></script>
+<script src="/webjars/Magnific-Popup/1.1.0/jquery.magnific-popup.min.js" th:src="@{/webjars/Magnific-Popup/1.1.0/jquery.magnific-popup.min.js}"></script>
+
+<!-- Custom scripts for Creative template -->
+<script src="js/creative.min.js"></script>
+
 <th:block layout:fragment="scripts"></th:block>
 
 
