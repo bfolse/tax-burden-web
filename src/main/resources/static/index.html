@@ -17,6 +17,8 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="css/creative.min.css" th:href="@{css/creative.min.css}">
+    <!-- Custom styles for TTB -->
+    <link rel="stylesheet" href="css/ttb.css" th:href="@{css/ttb.css}">
 </head>
 
 <body id="page-top">
@@ -63,6 +65,7 @@
                 <p class="text-faded mb-5">Nobody likes taxes. But have you ever thought about how much you actually pay? Here's an easy way to find out. Just answer some simple questions and we'll give you a free Tax Burden Report&trade; with estimates for all the taxes you pay.
                     We value your privacy so we'll never ask you for any personally identifiable information.</p>
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="/geo">Try it here &raquo;</a>
+                <i><p class="text-faded mb-5">* BETA - State and local taxes available only for Georgia. Other states coming soon. *</p></i>
             </div>
         </div>
     </div>
@@ -90,11 +93,12 @@
                 <p><a class="js-scroll-trigger btn btn-secondary" href="#articles" role="button">See all &raquo;</a></p>
             </div>
         </div>
+        <hr>
     </div>
 </section>
 
 <!-- About Section -->
-<section id="about">
+<section id="about" class="bg-dark text-white">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -115,7 +119,7 @@
 <!-- Tax Types Section -->
 <section id="types">
     <div class="container">
-        <div class="row mt-3">
+        <div class="row">
             <div class="col-lg-12">
                 <h2 class="section-heading text-uppercase">Types of Taxes</h2>
             </div>
@@ -145,6 +149,7 @@
                 <p>TODO</p>
             </div>
         </div>
+        <hr>
     </div>
 </section>
 
@@ -153,14 +158,177 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="section-heading text-uppercase">Tax Burden Report&trade;</h2>
+                <h2 class="section-heading text-uppercase">Tax Burden Report<small>&trade;</small></h2>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 mx-auto">
-                <p>TODO</p>
+                <p>Your Tax Burden is based on:</p>
+                <ul>
+                    <li>How much income you earn and how you earn it</li>
+                    <li>Where you live or own property and how much it is worth</li>
+                    <li>How you save and spend your money</li>
+                    <li>Your marital status</li>
+                    <li>How many children or dependents you have</li>
+                    <li>Other lifestyle choices</li>
+                </ul>
+                <p>Your Tax Burden is not based on your identity. We don't need your name, address, Social Security number, phone number, or email address... so we won't ask for them.</p>
+                <p>With the inputs you provide, we calculate an estimate of all the taxes you'll pay during the current year and create a Tax Burden Report<small>&trade;</small> just for you.
+                    Here is a sample <a class="js-scroll-trigger" href="#sample">Tax Burden Report</a>.</p>
+                <p>The Tax Burden Report<small>&trade;</small> contains <mark>ESTIMATES!</mark> The calculations we use take limited input, make assumptions, and exclude factors that have minimal impact
+                or are not commonly occurring. Though we make no guarantees of accuracy, for most, the report will be a reasonable representation of the taxes you pay.
+                    For those with special circumstances, or those whose situation is not reflected in the questions we ask, the report will be less accurate.
+                </p>
+                <i>
+                <h5>Disclaimer</h5>
+                <p class="small">Total Tax Burden assumes no responsibility or liability for any errors or omissions in the content of this site.
+                    The information contained in this site is provided on an “as is” basis with no guarantees of completeness, accuracy, usefulness or timeliness, and without
+                any warranties of any kind whatsoever, express or implied.</p>
+                </i>
             </div>
         </div>
+        <hr>
+    </div>
+</section>
+
+<!-- Sample Report Section -->
+<section id="sample">
+    <div class="container bg-secondary">
+        <div class="row">
+            <div class="col-lg-12">
+                <i><h2 class="section-heading text-uppercase">SAMPLE</h2></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="container">
+                    <h3>Tax Payer Profile</h3>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <h4>Political Divisions</h4>
+                            <table title="Political Divisions" class="table table-sm">
+                                <tr>
+                                    <td>Gwinnett County</td>
+                                    <td>COUNTY</td>
+                                </tr>
+                                <tr>
+                                    <td>Lilburn city</td>
+                                    <td>CITY</td>
+                                </tr>
+                                <tr>
+                                    <td>GA</td>
+                                    <td>STATE</td>
+                                </tr>
+                                <tr>
+                                    <td>US</td>
+                                    <td>FEDERAL</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-5">
+                            <h4>Tax Payer Data</h4>
+                            <table title="Tax Payer Data" class="table table-sm">
+                                <tr><td>Annual Income</td><td >$100000</td></tr>
+                                <tr><td>Mortgage Interest</td><td >$5000</td>
+                                <tr><td>Real Property Market Value</td><td >$300000</td>
+                                <tr><td>Tax Filing Status</td><td >SINGLE</td></tr>
+                                <tr><td>Pre-tax Contributions</td><td >$11000</td></tr>
+                                <tr><td>Other Itemized Deductions</td><td >$2000</td></tr>
+                                <tr><td>Dependents</td><td >4</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <h3>Tax Burden Report</h3>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Political Division</th>
+                                    <th>Type</th>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>United States</td>
+                                    <td>PAYROLL_FEDERAL</td>
+                                    <td>US Federal Payroll Social Security</td>
+                                    <td style="text-align:right;">$6000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>United States</td>
+                                    <td>PAYROLL_FEDERAL</td>
+                                    <td>US Federal Payroll Medicare</td>
+                                    <td style="text-align:right;">$1000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Gwinnett County</td>
+                                    <td>SALES_COUNTY</td>
+                                    <td>Gwinnett County GA Sales</td>
+                                    <td style="text-align:right;">$3374.14</td>
+                                </tr>
+                                <tr>
+                                    <td>Gwinnett County</td>
+                                    <td>PROPERTY_COUNTY</td>
+                                    <td>Gwinnett County GA Property</td>
+                                    <td style="text-align:right;">$3000.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Georgia</td>
+                                    <td>SALES_STATE</td>
+                                    <td>GA State Sales</td>
+                                    <td style="text-align:right;">$1930.61</td>
+                                </tr>
+                                <tr>
+                                    <td>Georgia</td>
+                                    <td>FUEL_STATE</td>
+                                    <td>State of Georgia Fuel Tax</td>
+                                    <td style="text-align:right;">$380.74</td>
+                                </tr>
+                                <tr>
+                                    <td>United States</td>
+                                    <td>FUEL_FEDERAL</td>
+                                    <td>US Federal Fuel Tax</td>
+                                    <td style="text-align:right;">$214.16</td>
+                                </tr>
+                                <tr>
+                                    <td>Georgia</td>
+                                    <td>INCOME_STATE</td>
+                                    <td>GA State Income</td>
+                                    <td style="text-align:right;">$3710.00</td>
+                                </tr>
+                                <tr>
+                                    <td>United States</td>
+                                    <td>INCOME_FEDERAL</td>
+                                    <td>US Federal Income</td>
+                                    <td style="text-align:right;">$8111.46</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>TOTAL</td>
+                                    <td style="text-align:right;">$27721.11</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <i><h2 class="section-heading text-uppercase">SAMPLE</h2></i>
+            </div>
+        </div>
+        <p class="text-muted">&copy; 2019 Total Tax Burden</p>
+    </div>
+    <div class="container">
+        <hr>
     </div>
 </section>
 
@@ -177,6 +345,7 @@
                 <p>TODO</p>
             </div>
         </div>
+        <hr>
     </div>
 </section>
 
