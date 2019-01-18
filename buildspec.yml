@@ -24,7 +24,8 @@ artifacts:
   files:
     - target/tax-burden-web-0.0.1-SNAPSHOT.jar
     - .ebextensions/**/*
-  discard-paths: yes
+  discard-paths: no
+  base-directory: target
 cache:
   paths:
     - '/root/.m2/**/*'
