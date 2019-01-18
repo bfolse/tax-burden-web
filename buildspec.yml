@@ -19,13 +19,13 @@ phases:
   post_build:
     commands:
       - echo Entered the post_build phase...
+      - cp target/tax-burden-web-0.0.1-SNAPSHOT.jar .
       - echo Build completed on `date`
 artifacts:
   files:
-    - target/tax-burden-web-0.0.1-SNAPSHOT.jar
+    - tax-burden-web-0.0.1-SNAPSHOT.jar
     - .ebextensions/**/*
   discard-paths: no
-  base-directory: target
 cache:
   paths:
     - '/root/.m2/**/*'
