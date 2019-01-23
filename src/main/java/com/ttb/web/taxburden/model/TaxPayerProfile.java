@@ -273,7 +273,7 @@ public class TaxPayerProfile {
 		List<com.ttb.service.taxburden.domain.PoliticalDivision> servicePoliticalDivisions = new ArrayList<com.ttb.service.taxburden.domain.PoliticalDivision>();
 		if (webPoliticalDivisions != null) {
 			webPoliticalDivisions.forEach(p -> servicePoliticalDivisions.add(
-					new com.ttb.service.taxburden.domain.PoliticalDivision(p.getFips(), p.getName(), p.getDescription(), p.getType()))
+					new com.ttb.service.taxburden.domain.PoliticalDivision(p.getFips(), p.getName(), p.getDescription(), com.ttb.service.taxburden.domain.PoliticalDivisionType.valueOf(p.getType().name())))
 			);
 		}
 		return servicePoliticalDivisions;

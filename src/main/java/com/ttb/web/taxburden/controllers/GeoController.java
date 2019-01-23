@@ -19,9 +19,6 @@ import com.ttb.TaxBurdenServiceClient;
 @SessionAttributes("taxPayerProfile")
 public class GeoController {
 	private static final Logger logger = LoggerFactory.getLogger(GeoController.class);
-    private static String COUNTY_TYPE = "COUNTY";
-    private static String CITY_TYPE = "CITY";
-    private static String STATE_TYPE = "STATE";
 
 	@Autowired
 	TaxBurdenServiceClient taxBurdenServiceClient;
@@ -71,13 +68,13 @@ public class GeoController {
         logger.debug("taxPayerProfile: " + taxPayerProfile);
         // Update taxPayerProfile with selected politicalDivisions
         if (politicalDivisionSelectForm.getSelectedCounty() != null) {
-            taxPayerProfile.getPoliticalDivisions().removeIf(pd -> pd.getType().equals(COUNTY_TYPE) && !pd.getFips().equals(politicalDivisionSelectForm.getSelectedCounty()));
+            taxPayerProfile.getPoliticalDivisions().removeIf(pd -> pd.getType().equals(PoliticalDivisionType.COUNTY) && !pd.getFips().equals(politicalDivisionSelectForm.getSelectedCounty()));
         }
         if (politicalDivisionSelectForm.getSelectedCity() != null) {
-            taxPayerProfile.getPoliticalDivisions().removeIf(pd -> pd.getType().equals(CITY_TYPE) && !pd.getFips().equals(politicalDivisionSelectForm.getSelectedCity()));
+            taxPayerProfile.getPoliticalDivisions().removeIf(pd -> pd.getType().equals(PoliticalDivisionType.CITY) && !pd.getFips().equals(politicalDivisionSelectForm.getSelectedCity()));
         }
         if (politicalDivisionSelectForm.getSelectedState() != null) {
-            taxPayerProfile.getPoliticalDivisions().removeIf(pd -> pd.getType().equals(STATE_TYPE) && !pd.getFips().equals(politicalDivisionSelectForm.getSelectedState()));
+            taxPayerProfile.getPoliticalDivisions().removeIf(pd -> pd.getType().equals(PoliticalDivisionType.STATE) && !pd.getFips().equals(politicalDivisionSelectForm.getSelectedState()));
         }
         return "geo-confirm";
     }
@@ -91,12 +88,12 @@ public class GeoController {
         Map<String, List<PoliticalDivision>> typeMap = new HashMap<String, List<PoliticalDivision>>();
         boolean multiples = false;
         for (PoliticalDivision politicalDivision : politicalDivisions) {
-            if (!typeMap.containsKey(politicalDivision.getType())) {
+            if (!typeMap.containsKey(politicalDivision.getType().name())) {
                 List<PoliticalDivision> pdList = new ArrayList<PoliticalDivision>();
                 pdList.add(politicalDivision);
-                typeMap.put(politicalDivision.getType(), pdList);
+                typeMap.put(politicalDivision.getType().name(), pdList);
             } else {
-                typeMap.get(politicalDivision.getType()).add(politicalDivision);
+                typeMap.get(politicalDivision.getType().name()).add(politicalDivision);
                 multiples = true;
             }
         }
@@ -112,6 +109,7 @@ public class GeoController {
                 }
             }
         }
+        logger.debug("typeMap: " + typeMap);
         return typeMap;
     }
 }

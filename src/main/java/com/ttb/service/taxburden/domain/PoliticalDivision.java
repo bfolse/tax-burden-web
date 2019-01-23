@@ -4,7 +4,7 @@ public class PoliticalDivision {
 	private String fips;
 	private String name;
 	private String description;
-	private String type;
+	private PoliticalDivisionType type;
 	/**
 	 * 
 	 */
@@ -17,7 +17,7 @@ public class PoliticalDivision {
 	 * @param description
 	 * @param type
 	 */
-	public PoliticalDivision(String fips, String name, String description, String type) {
+	public PoliticalDivision(String fips, String name, String description, PoliticalDivisionType type) {
 		super();
 		this.fips = fips;
 		this.name = name;
@@ -60,18 +60,15 @@ public class PoliticalDivision {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	/**
-	 * @return the type
-	 */
-	public String getType() {
+
+	public PoliticalDivisionType getType() {
 		return type;
 	}
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
+
+	public void setType(PoliticalDivisionType type) {
 		this.type = type;
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
