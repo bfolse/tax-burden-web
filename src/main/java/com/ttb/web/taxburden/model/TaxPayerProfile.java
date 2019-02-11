@@ -12,7 +12,6 @@ public class TaxPayerProfile {
 	public static final String BASIC_CONSUMER_EXPENDITURE_PROFILE_KEY = "BASIC";
 
 	private String taxPayerProfileKey;
-	private String postalCode;
 	private List<PoliticalDivision> politicalDivisions;
 	private MonetaryAmount annualIncome;
 	private MonetaryAmount mortgageInterest;
@@ -31,41 +30,28 @@ public class TaxPayerProfile {
 	}
 
 	/**
-	 * @param postalCode
-	 */
-	public TaxPayerProfile(String postalCode) {
-		super();
-		this.postalCode = postalCode;
-	}
-
-	/**
-	 * @param postalCode
 	 * @param politicalDivisionKeys
 	 */
-	public TaxPayerProfile(String postalCode, List<PoliticalDivision> politicalDivisionKeys) {
+	public TaxPayerProfile(List<PoliticalDivision> politicalDivisionKeys) {
 		super();
-		this.postalCode = postalCode;
 		this.politicalDivisions = politicalDivisionKeys;
 	}
 
 	/**
-	 * @param postalCode
 	 * @param politicalDivisions
 	 * @param annualIncome
 	 * @param mortgageInterest
 	 */
-	public TaxPayerProfile(String postalCode, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome,
+	public TaxPayerProfile(List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome,
 						   MonetaryAmount mortgageInterest) {
 		super();
-		this.postalCode = postalCode;
 		this.politicalDivisions = politicalDivisions;
 		this.annualIncome = annualIncome;
 		this.mortgageInterest = mortgageInterest;
 	}
 
-	public TaxPayerProfile(String postalCode, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {
+	public TaxPayerProfile(List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {
 		super();
-		this.postalCode = postalCode;
 		this.politicalDivisions = politicalDivisions;
 		this.annualIncome = annualIncome;
 		this.mortgageInterest = mortgageInterest;
@@ -76,10 +62,8 @@ public class TaxPayerProfile {
 		this.dependents = dependents;
 	}
 
-	public TaxPayerProfile(String taxPayerProfileKey, String postalCode, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {
-		super();
+	public TaxPayerProfile(String taxPayerProfileKey, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {		super();
 		this.taxPayerProfileKey = taxPayerProfileKey;
-		this.postalCode = postalCode;
 		this.politicalDivisions = politicalDivisions;
 		this.annualIncome = annualIncome;
 		this.mortgageInterest = mortgageInterest;
@@ -97,7 +81,6 @@ public class TaxPayerProfile {
 	public TaxPayerProfile(com.ttb.service.taxburden.domain.TaxPayerProfile clientTaxPayerProfile) {
 		super();
 		this.taxPayerProfileKey = clientTaxPayerProfile.getTaxPayerProfileKey();
-		this.postalCode = clientTaxPayerProfile.getPostalCode();
 		this.politicalDivisions = toWebPoliticalDivisions(clientTaxPayerProfile.getPoliticalDivisions());
 		this.annualIncome = new MonetaryAmount(clientTaxPayerProfile.getAnnualIncome());
 		this.mortgageInterest = new MonetaryAmount(clientTaxPayerProfile.getMortgageInterest());
@@ -131,7 +114,6 @@ public class TaxPayerProfile {
 		}
 		return new com.ttb.service.taxburden.domain.TaxPayerProfile(this.getTaxPayerProfileKey(),
 				null,
-				this.postalCode,
 				toServicePoliticalDivisions(this.politicalDivisions),
 				this.annualIncome.toClientMonetaryAmount(),
 				this.mortgageInterest.toClientMonetaryAmount(),
@@ -149,20 +131,6 @@ public class TaxPayerProfile {
 
 	public void setTaxPayerProfileKey(String taxPayerProfileKey) {
 		this.taxPayerProfileKey = taxPayerProfileKey;
-	}
-
-	/**
-	 * @return the postalCode
-	 */
-	public String getPostalCode() {
-		return postalCode;
-	}
-
-	/**
-	 * @param postalCode the postalCode to set
-	 */
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
 	}
 
 	/**
@@ -285,7 +253,6 @@ public class TaxPayerProfile {
 		if (!(o instanceof TaxPayerProfile)) return false;
 		TaxPayerProfile that = (TaxPayerProfile) o;
 		return Objects.equals(taxPayerProfileKey, that.taxPayerProfileKey) &&
-				Objects.equals(postalCode, that.postalCode) &&
 				Objects.equals(politicalDivisions, that.politicalDivisions) &&
 				Objects.equals(annualIncome, that.annualIncome) &&
 				Objects.equals(mortgageInterest, that.mortgageInterest) &&
@@ -299,14 +266,13 @@ public class TaxPayerProfile {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(taxPayerProfileKey, postalCode, politicalDivisions, annualIncome, mortgageInterest, realPropertyMarketValue, consumerExpenditureProfileKey, taxFilingStatus, preTaxContributions, otherItemizedDeductions, dependents);
+		return Objects.hash(taxPayerProfileKey, politicalDivisions, annualIncome, mortgageInterest, realPropertyMarketValue, consumerExpenditureProfileKey, taxFilingStatus, preTaxContributions, otherItemizedDeductions, dependents);
 	}
 
 	@Override
 	public String toString() {
 		return "TaxPayerProfile{" +
 				"taxPayerProfileKey='" + taxPayerProfileKey + '\'' +
-				", postalCode='" + postalCode + '\'' +
 				", politicalDivisions=" + politicalDivisions +
 				", annualIncome=" + annualIncome +
 				", mortgageInterest=" + mortgageInterest +

@@ -11,7 +11,6 @@ public class TaxPayerProfile {
 	
 	private String taxPayerProfileKey;
 	private Date timestamp;
-	private String postalCode;
 	private List<PoliticalDivision> politicalDivisions;
 	private MonetaryAmount annualIncome;
 	private MonetaryAmount mortgageInterest;
@@ -33,16 +32,14 @@ public class TaxPayerProfile {
 	}
 
 	/**
-	 * @param postalCode
 	 * @param politicalDivisions
 	 * @param annualIncome
 	 * @param mortgageInterest
 	 */
-	public TaxPayerProfile(String postalCode, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue) {
+	public TaxPayerProfile(List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue) {
 		super();
 		this.timestamp = new Date();
 		this.taxPayerProfileKey = UUID.randomUUID().toString();
-		this.postalCode = postalCode;
 		this.politicalDivisions = politicalDivisions;
 		this.annualIncome = annualIncome;
 		this.mortgageInterest = mortgageInterest;
@@ -51,16 +48,14 @@ public class TaxPayerProfile {
 	}
 
 	/**
-	 * @param postalCode
 	 * @param politicalDivisions
 	 * @param annualIncome
 	 * @param mortgageInterest
 	 */
-	public TaxPayerProfile(String postalCode, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey) {
+	public TaxPayerProfile(List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey) {
 		super();
 		this.timestamp = new Date();
 		this.taxPayerProfileKey = UUID.randomUUID().toString();
-		this.postalCode = postalCode;
 		this.politicalDivisions = politicalDivisions;
 		this.annualIncome = annualIncome;
 		this.mortgageInterest = mortgageInterest;
@@ -71,13 +66,11 @@ public class TaxPayerProfile {
 	/**
 	 * @param taxPayerProfileKey
 	 * @param timestamp
-	 * @param postalCode
 	 * @param politicalDivisions
 	 * @param annualIncome
 	 * @param mortgageInterest
 	 */
-	public TaxPayerProfile(String taxPayerProfileKey, Date timestamp, String postalCode,
-                           List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey) {
+	public TaxPayerProfile(String taxPayerProfileKey, Date timestamp, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey) {
 		super();
 		if (taxPayerProfileKey == null) {
 			this.taxPayerProfileKey = UUID.randomUUID().toString();
@@ -89,7 +82,6 @@ public class TaxPayerProfile {
 		} else {
 			this.timestamp = timestamp;
 		}
-		this.postalCode = postalCode;
 		this.politicalDivisions = politicalDivisions;
 		this.annualIncome = annualIncome;
 		this.mortgageInterest = mortgageInterest;
@@ -97,7 +89,7 @@ public class TaxPayerProfile {
 		this.consumerExpenditureProfileKey = consumerExpenditureProfileKey;
 	}
 
-	public TaxPayerProfile(String taxPayerProfileKey, Date timestamp, String postalCode, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {
+	public TaxPayerProfile(String taxPayerProfileKey, Date timestamp, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {
 		if (taxPayerProfileKey == null) {
 			this.taxPayerProfileKey = UUID.randomUUID().toString();
 		} else {
@@ -108,7 +100,6 @@ public class TaxPayerProfile {
 		} else {
 			this.timestamp = timestamp;
 		}
-		this.postalCode = postalCode;
 		this.politicalDivisions = politicalDivisions;
 		this.annualIncome = annualIncome;
 		this.mortgageInterest = mortgageInterest;
@@ -146,20 +137,6 @@ public class TaxPayerProfile {
 	 */
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
-	}
-
-	/**
-	 * @return the postalCode
-	 */
-	public String getPostalCode() {
-		return postalCode;
-	}
-
-	/**
-	 * @param postalCode the postalCode to set
-	 */
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
 	}
 
 	/**
@@ -271,7 +248,6 @@ public class TaxPayerProfile {
 		TaxPayerProfile that = (TaxPayerProfile) o;
 		return Objects.equals(taxPayerProfileKey, that.taxPayerProfileKey) &&
 				Objects.equals(timestamp, that.timestamp) &&
-				Objects.equals(postalCode, that.postalCode) &&
 				Objects.equals(politicalDivisions, that.politicalDivisions) &&
 				Objects.equals(annualIncome, that.annualIncome) &&
 				Objects.equals(mortgageInterest, that.mortgageInterest) &&
@@ -285,7 +261,7 @@ public class TaxPayerProfile {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(taxPayerProfileKey, timestamp, postalCode, politicalDivisions, annualIncome, mortgageInterest, realPropertyMarketValue, consumerExpenditureProfileKey, taxFilingStatus, preTaxContributions, otherItemizedDeductions, dependents);
+		return Objects.hash(taxPayerProfileKey, timestamp, politicalDivisions, annualIncome, mortgageInterest, realPropertyMarketValue, consumerExpenditureProfileKey, taxFilingStatus, preTaxContributions, otherItemizedDeductions, dependents);
 	}
 
 	@Override
@@ -293,7 +269,6 @@ public class TaxPayerProfile {
 		return "TaxPayerProfile{" +
 				"taxPayerProfileKey='" + taxPayerProfileKey + '\'' +
 				", timestamp=" + timestamp +
-				", postalCode='" + postalCode + '\'' +
 				", politicalDivisions=" + politicalDivisions +
 				", annualIncome=" + annualIncome +
 				", mortgageInterest=" + mortgageInterest +
