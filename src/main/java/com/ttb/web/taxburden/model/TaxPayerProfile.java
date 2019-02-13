@@ -14,6 +14,8 @@ public class TaxPayerProfile {
 	private String taxPayerProfileKey;
 	private List<PoliticalDivision> politicalDivisions;
 	private MonetaryAmount annualIncome;
+	private MonetaryAmount selfEmployedIncome;
+	private MonetaryAmount capitalGainsIncome;
 	private MonetaryAmount mortgageInterest;
 	private MonetaryAmount realPropertyMarketValue;
 	private String consumerExpenditureProfileKey = BASIC_CONSUMER_EXPENDITURE_PROFILE_KEY;
@@ -62,10 +64,12 @@ public class TaxPayerProfile {
 		this.dependents = dependents;
 	}
 
-	public TaxPayerProfile(String taxPayerProfileKey, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {		super();
+	public TaxPayerProfile(String taxPayerProfileKey, List<PoliticalDivision> politicalDivisions, MonetaryAmount annualIncome, MonetaryAmount selfEmployedIncome, MonetaryAmount capitalGainsIncome, MonetaryAmount mortgageInterest, MonetaryAmount realPropertyMarketValue, String consumerExpenditureProfileKey, TaxFilingStatus taxFilingStatus, MonetaryAmount preTaxContributions, MonetaryAmount otherItemizedDeductions, Integer dependents) {		super();
 		this.taxPayerProfileKey = taxPayerProfileKey;
 		this.politicalDivisions = politicalDivisions;
 		this.annualIncome = annualIncome;
+		this.selfEmployedIncome = selfEmployedIncome;
+		this.capitalGainsIncome = capitalGainsIncome;
 		this.mortgageInterest = mortgageInterest;
 		this.realPropertyMarketValue = realPropertyMarketValue;
 		this.consumerExpenditureProfileKey = consumerExpenditureProfileKey;
@@ -83,6 +87,8 @@ public class TaxPayerProfile {
 		this.taxPayerProfileKey = clientTaxPayerProfile.getTaxPayerProfileKey();
 		this.politicalDivisions = toWebPoliticalDivisions(clientTaxPayerProfile.getPoliticalDivisions());
 		this.annualIncome = new MonetaryAmount(clientTaxPayerProfile.getAnnualIncome());
+		this.selfEmployedIncome = new MonetaryAmount(clientTaxPayerProfile.getSelfEmployedIncome());
+		this.capitalGainsIncome = new MonetaryAmount(clientTaxPayerProfile.getCapitalGainsIncome());
 		this.mortgageInterest = new MonetaryAmount(clientTaxPayerProfile.getMortgageInterest());
 		this.realPropertyMarketValue = new MonetaryAmount(clientTaxPayerProfile.getRealPropertyMarketValue());
 		this.consumerExpenditureProfileKey = clientTaxPayerProfile.getConsumerExpenditureProfileKey();
@@ -100,6 +106,12 @@ public class TaxPayerProfile {
 		if (this.annualIncome == null) {
 			this.annualIncome = new MonetaryAmount(BigDecimal.ZERO);
 		}
+		if (this.selfEmployedIncome == null) {
+			this.selfEmployedIncome = new MonetaryAmount(BigDecimal.ZERO);
+		}
+		if (this.capitalGainsIncome == null) {
+			this.capitalGainsIncome = new MonetaryAmount(BigDecimal.ZERO);
+		}
 		if (this.mortgageInterest == null) {
 			this.mortgageInterest = new MonetaryAmount(BigDecimal.ZERO);
 		}
@@ -116,6 +128,8 @@ public class TaxPayerProfile {
 				null,
 				toServicePoliticalDivisions(this.politicalDivisions),
 				this.annualIncome.toClientMonetaryAmount(),
+				this.selfEmployedIncome.toClientMonetaryAmount(),
+				this.capitalGainsIncome.toClientMonetaryAmount(),
 				this.mortgageInterest.toClientMonetaryAmount(),
 				this.realPropertyMarketValue.toClientMonetaryAmount(),
 				this.getConsumerExpenditureProfileKey(),
@@ -159,6 +173,22 @@ public class TaxPayerProfile {
 	 */
 	public void setAnnualIncome(MonetaryAmount annualIncome) {
 		this.annualIncome = annualIncome;
+	}
+
+	public MonetaryAmount getSelfEmployedIncome() {
+		return selfEmployedIncome;
+	}
+
+	public void setSelfEmployedIncome(MonetaryAmount selfEmployedIncome) {
+		this.selfEmployedIncome = selfEmployedIncome;
+	}
+
+	public MonetaryAmount getCapitalGainsIncome() {
+		return capitalGainsIncome;
+	}
+
+	public void setCapitalGainsIncome(MonetaryAmount capitalGainsIncome) {
+		this.capitalGainsIncome = capitalGainsIncome;
 	}
 
 	/**
@@ -255,6 +285,8 @@ public class TaxPayerProfile {
 		return Objects.equals(taxPayerProfileKey, that.taxPayerProfileKey) &&
 				Objects.equals(politicalDivisions, that.politicalDivisions) &&
 				Objects.equals(annualIncome, that.annualIncome) &&
+				Objects.equals(selfEmployedIncome, that.selfEmployedIncome) &&
+				Objects.equals(capitalGainsIncome, that.capitalGainsIncome) &&
 				Objects.equals(mortgageInterest, that.mortgageInterest) &&
 				Objects.equals(realPropertyMarketValue, that.realPropertyMarketValue) &&
 				Objects.equals(consumerExpenditureProfileKey, that.consumerExpenditureProfileKey) &&
@@ -266,7 +298,7 @@ public class TaxPayerProfile {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(taxPayerProfileKey, politicalDivisions, annualIncome, mortgageInterest, realPropertyMarketValue, consumerExpenditureProfileKey, taxFilingStatus, preTaxContributions, otherItemizedDeductions, dependents);
+		return Objects.hash(taxPayerProfileKey, politicalDivisions, annualIncome, selfEmployedIncome, capitalGainsIncome, mortgageInterest, realPropertyMarketValue, consumerExpenditureProfileKey, taxFilingStatus, preTaxContributions, otherItemizedDeductions, dependents);
 	}
 
 	@Override
@@ -275,6 +307,8 @@ public class TaxPayerProfile {
 				"taxPayerProfileKey='" + taxPayerProfileKey + '\'' +
 				", politicalDivisions=" + politicalDivisions +
 				", annualIncome=" + annualIncome +
+				", selfEmployedIncome=" + selfEmployedIncome +
+				", capitalGainsIncome=" + capitalGainsIncome +
 				", mortgageInterest=" + mortgageInterest +
 				", realPropertyMarketValue=" + realPropertyMarketValue +
 				", consumerExpenditureProfileKey='" + consumerExpenditureProfileKey + '\'' +

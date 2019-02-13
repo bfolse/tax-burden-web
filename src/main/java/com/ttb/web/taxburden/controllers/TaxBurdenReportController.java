@@ -46,6 +46,7 @@ public class TaxBurdenReportController {
 			return "error";
 		}
     	model.addAttribute("taxBurdenReport", new TaxBurdenReport(clientTaxBurdenReport));
+		logger.debug("model: " +  model);
         return "report-confirm";
     }
 }

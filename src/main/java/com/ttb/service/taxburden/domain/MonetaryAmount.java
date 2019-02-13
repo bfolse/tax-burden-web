@@ -15,47 +15,74 @@ public class MonetaryAmount {
 	public MonetaryAmount() {
 		super();
 	}
+
 	/**
 	 * @param currency
 	 * @param amount
 	 */
 	public MonetaryAmount(Currency currency, BigDecimal amount) {
 		super();
-		this.currency = currency;
-		this.amount = amount;
+		if (currency == null) {
+			this.currency = Currency.getInstance(DEFAULT_CURRENCY_CODE);
+		} else {
+			this.currency = currency;
+		}
+		if (amount == null) {
+			this.amount = BigDecimal.ZERO;
+		} else {
+			this.amount = amount;
+		}
 	}
+
 	/**
 	 * @param amount
 	 */
 	public MonetaryAmount(BigDecimal amount) {
 		super();
 		this.currency = Currency.getInstance(DEFAULT_CURRENCY_CODE);
-		this.amount = amount;
+		if (amount == null) {
+			this.amount = BigDecimal.ZERO;
+		} else {
+			this.amount = amount;
+		}
 	}
+
 	/**
 	 * @return the currency
 	 */
 	public Currency getCurrency() {
 		return currency;
 	}
+
 	/**
 	 * @param currency the currency to set
 	 */
 	public void setCurrency(Currency currency) {
-		this.currency = currency;
+		if (currency == null) {
+			this.currency = Currency.getInstance(DEFAULT_CURRENCY_CODE);
+		} else {
+			this.currency = currency;
+		}
 	}
+
 	/**
 	 * @return the amount
 	 */
 	public BigDecimal getAmount() {
 		return amount;
 	}
+
 	/**
 	 * @param amount the amount to set
 	 */
 	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
+		if (amount == null) {
+			this.amount = BigDecimal.ZERO;
+		} else {
+			this.amount = amount;
+		}
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
@@ -67,6 +94,7 @@ public class MonetaryAmount {
 		result = prime * result + ((currency == null) ? 0 : currency.hashCode());
 		return result;
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -91,6 +119,7 @@ public class MonetaryAmount {
 			return false;
 		return true;
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

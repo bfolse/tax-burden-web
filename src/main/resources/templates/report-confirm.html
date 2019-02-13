@@ -23,13 +23,15 @@
             <div class="col-md-5">
                 <h4>Tax Payer Data</h4>
                 <table title="Tax Payer Data" class="table table-sm">
-                    <tr><td>Annual Income</td><td th:text="'$'+${taxPayerProfile.annualIncome.amount}" /></tr>
-                    <tr><td>Mortgage Interest</td><td th:text="'$'+${taxPayerProfile.mortgageInterest.amount}" />
-                    <tr><td>Real Property Market Value</td><td th:text="'$'+${taxPayerProfile.realPropertyMarketValue.amount}" />
                     <tr><td>Tax Filing Status</td><td th:text="${taxPayerProfile.taxFilingStatus}" /></tr>
-                    <tr><td>Pre-tax Contributions</td><td th:text="'$'+${taxPayerProfile.preTaxContributions.amount}" /></tr>
-                    <tr><td>Other Itemized Deductions</td><td th:text="'$'+${taxPayerProfile.otherItemizedDeductions.amount}" /></tr>
                     <tr><td>Dependents</td><td th:text="${taxPayerProfile.dependents}" /></tr>
+                    <tr><td>Annual Income</td><td th:text="'$'+${taxPayerProfile.annualIncome.amount}" /></tr>
+                    <tr><td>Self-employed Income</td><td th:text="'$'+${taxPayerProfile.selfEmployedIncome.amount}" /></tr>
+                    <tr><td>Capital Gains Income</td><td th:text="'$'+${taxPayerProfile.capitalGainsIncome.amount}" /></tr>
+                    <tr><td>Pre-tax Contributions</td><td th:text="'$'+${taxPayerProfile.preTaxContributions.amount}" /></tr>
+                    <tr><td>Mortgage Interest</td><td th:text="'$'+${taxPayerProfile.mortgageInterest.amount}" />
+                    <tr><td>Other Itemized Deductions</td><td th:text="'$'+${taxPayerProfile.otherItemizedDeductions.amount}" /></tr>
+                    <tr><td>Real Property Market Value</td><td th:text="'$'+${taxPayerProfile.realPropertyMarketValue.amount}" />
                 </table>
             </div>
         </div>
