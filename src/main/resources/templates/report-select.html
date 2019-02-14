@@ -55,6 +55,12 @@
                                placeholder=""
                                title="Your wages (salary or hourly) for the year paid by an employer"/>
                     </div>
+                    <div class="form-group">
+                        <label for="preTaxContributions" class="h5">What are your annual pre-tax contributions (401k or other retirement, medical insurance, etc.)?</label>
+                        <input type="text" id="preTaxContributions" th:field="*{preTaxContributions.amount}" class="form-control" required="required" autofocus="autofocus"
+                               placeholder=""
+                               title="What are your annual pre-tax contributions (401k or other retirement, medical insurance, etc.)?"/>
+                    </div>
                     <div class="panel panel-default">
                         <div class="panel-heading collapsed h5 text-muted pl-2" data-toggle="collapse" data-target="#selfEmployed" aria-expanded="false" aria-controls="selfEmployed"> Self-employed? <i class="chevron fa fa-fw" ></i></div>
                         <div class="collapse" id="selfEmployed">
@@ -66,11 +72,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="preTaxContributions" class="h5">What are your annual pre-tax contributions (401k or other retirement, medical insurance, etc.)?</label>
-                        <input type="text" id="preTaxContributions" th:field="*{preTaxContributions.amount}" class="form-control" required="required" autofocus="autofocus"
-                               placeholder=""
-                               title="What are your annual pre-tax contributions (401k or other retirement, medical insurance, etc.)?"/>
+                    <div class="panel panel-default">
+                        <div class="panel-heading collapsed h5 text-muted pl-2" data-toggle="collapse" data-target="#capitalGains" aria-expanded="false" aria-controls="capitalGains"> Capital Gains? <i class="chevron fa fa-fw" ></i></div>
+                        <div class="collapse" id="capitalGains">
+                            <div class="form-group">
+                                <label for="capitalGainsIncome" class="h5">What are your net long-term capital gains? <small class="text-muted">Enter negative amount for loss</small></label>
+                                <input type="text" id="capitalGainsIncome" th:field="*{capitalGainsIncome.amount}" class="form-control" autofocus="autofocus"
+                                       placeholder=""
+                                       title="Net long-term capital gains"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
