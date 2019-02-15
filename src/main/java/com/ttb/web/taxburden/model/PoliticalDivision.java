@@ -1,5 +1,7 @@
 package com.ttb.web.taxburden.model;
 
+import java.util.Comparator;
+
 public class PoliticalDivision {
 	private String fips;
 	private String name;

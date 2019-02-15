@@ -14,7 +14,7 @@
             <div class="col-md-5">
                 <h4>Political Divisions</h4>
                 <table title="Political Divisions" class="table table-sm">
-                    <tr th:each="pd : ${taxPayerProfile.politicalDivisions}">
+                    <tr th:each="pd : ${taxPayerProfile.sortedPoliticalDivisions}">
                         <td th:text="${pd.name}"></td>
                         <td th:text="${pd.type}"></td>
                     </tr>
@@ -50,7 +50,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="te : ${taxBurdenReport.taxEntries}">
+                    <tr th:each="te : ${taxBurdenReport.sortedTaxEntries}">
                         <td th:text="${te.politicalDivision.description}">DEFAULT</td>
                         <td th:text="${te.taxType}">DEFAULT</td>
                         <td th:text="${te.description}">DEFAULT</td>

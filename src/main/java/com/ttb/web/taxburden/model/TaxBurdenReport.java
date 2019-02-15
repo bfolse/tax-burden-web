@@ -4,10 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Currency;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class TaxBurdenReport {
 	private String reportKey;
@@ -105,6 +102,19 @@ public class TaxBurdenReport {
 		return taxEntries;
 	}
 
+	public List<TaxEntry> getSortedTaxEntries() {
+		List<TaxEntry> sortedTaxEntries = taxEntries;
+		Collections.sort(sortedTaxEntries, new TaxEntrySortComparator());
+		return sortedTaxEntries;
+	}
+
+	private class TaxEntrySortComparator implements Comparator<TaxEntry> {
+		@Override
+		public int compare(TaxEntry te1, TaxEntry te2) {
+			return te1.getTaxType().getLevel() - te2.getTaxType().getLevel();
+		}
+	}
+
 	/**
 	 * @param taxEntries the taxEntries to set
 	 */
@@ -183,5 +193,4 @@ public class TaxBurdenReport {
 		return "TaxBurdenReport [reportKey=" + reportKey + ", timestamp=" + timestamp + ", taxPayerProfile="
 				+ taxPayerProfile + ", taxEntries=" + taxEntries + "]";
 	}
-
 }

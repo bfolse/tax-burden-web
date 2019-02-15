@@ -11,7 +11,7 @@
 	<h4>Selected Location</h4>
     <table class="table table-sm" title="Political Divisions">
         <tbody>
-            <tr th:each="pd : ${taxPayerProfile.politicalDivisions}">
+            <tr th:each="pd : ${taxPayerProfile.sortedPoliticalDivisions}">
                 <td th:text="${pd.name}"></td>
                 <td th:text="${pd.type}"></td>
             </tr>

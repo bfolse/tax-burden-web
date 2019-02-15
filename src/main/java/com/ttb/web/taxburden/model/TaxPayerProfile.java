@@ -3,9 +3,7 @@ package com.ttb.web.taxburden.model;
 import com.ttb.service.taxburden.domain.TaxFilingStatus;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class TaxPayerProfile {
 
@@ -275,6 +273,19 @@ public class TaxPayerProfile {
 			);
 		}
 		return servicePoliticalDivisions;
+	}
+
+	public List<PoliticalDivision> getSortedPoliticalDivisions() {
+		List<PoliticalDivision> sortedPoliticalDivisions = politicalDivisions;
+		Collections.sort(sortedPoliticalDivisions, new TypeSortComparator());
+		return sortedPoliticalDivisions;
+	}
+
+	public class TypeSortComparator implements Comparator<PoliticalDivision> {
+		@Override
+		public int compare(PoliticalDivision pd1, PoliticalDivision pd2) {
+			return pd1.getType().getLevel() - pd2.getType().getLevel();
+		}
 	}
 
 	@Override
