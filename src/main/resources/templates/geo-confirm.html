@@ -8,17 +8,31 @@
 </head>
 <body>
 <div layout:fragment="content">
-	<h4>Selected Location</h4>
-    <table class="table table-sm" title="Political Divisions">
-        <tbody>
-            <tr th:each="pd : ${taxPayerProfile.sortedPoliticalDivisions}">
-                <td th:text="${pd.name}"></td>
-                <td th:text="${pd.type}"></td>
-            </tr>
-        </tbody>
-    </table>
-    <a class="btn btn-secondary" href="/geo" role="button">Choose another location</a>
-    <a class="btn btn-primary" href="/report" role="button">Continue</a>
+    <div class="row">
+        <div class="col-md-9">
+        <h4>Selected Location</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <table class="table table-sm" title="Political Divisions">
+                <tbody>
+                    <tr th:each="pd : ${taxPayerProfile.sortedPoliticalDivisions}">
+                        <td th:text="${pd.name}"></td>
+                        <td th:text="${pd.type}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 py-1">
+            <a class="btn btn-secondary btn-md" href="/geo">Choose another location</a>
+        </div>
+        <div class="col-md-6 py-1">
+            <a class="btn btn-primary btn-md" href="/report">Continue</a>
+        </div>
+    </div>
 </div>
 </body>
 </html>

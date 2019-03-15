@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Discover how much you pay in total taxes, broken down by tax type (income, property, sales, payroll, etc.) and government level (federal, state, local).">
+    <meta name="description" content="Discover how much you pay in total taxes, broken down by tax type (income, property, sales, payroll, etc.) and government level (federal, state, local). How much do I pay in taxes? What is my tax burden?">
     <meta name="author" content="">
     <title>Total Tax Burden</title>
     <link rel="stylesheet" href="webjars/bootstrap/4.2.1/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
@@ -79,14 +79,14 @@
                     simple questions and we'll create your Tax Burden Report&trade; with estimates for all the taxes you pay.
                     We value your privacy so we'll never ask you for any personally identifiable information.</p>
                 <div class="row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-3">
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#report">Find out more &raquo;</a>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-3 py-1">
+                        <a class="btn btn-primary btn-md js-scroll-trigger" href="#report">Find out more &raquo;</a>
                     </div>
-                    <div class="col-sm-3">
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="/geo">Try it now &raquo;</a>
+                    <div class="col-sm-3 py-1">
+                        <a class="btn btn-primary btn-md js-scroll-trigger" href="/geo">Try it now &raquo;</a>
                     </div>
-                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2"></div>
                 </div>
                 <p></p>
             </div>
@@ -231,7 +231,9 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="container">
-                    <h3>Tax Payer Profile</h3>
+                    <div class="row">
+                        <h3>Tax Payer Profile</h3>
+                    </div>
                     <div class="row">
                         <div class="col-md-5">
                             <h4>Political Divisions</h4>
@@ -267,11 +269,11 @@
                             </table>
                         </div>
                     </div>
-                </div>
-                <div class="container">
-                    <h3>Tax Burden Report</h3>
                     <div class="row">
-                        <div class="col-md-10">
+                        <h3>Tax Burden Report</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
